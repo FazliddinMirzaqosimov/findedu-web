@@ -125,16 +125,16 @@ const Input: React.FC = (props: InputProps) => {
   return (
     <>
       {domLoaded && (
-        <div key="Static key">
+        <div key="Static key" className={style.divMain}>
           <Dropdown
             overlayClassName={style.overlay}
             menu={{
               items,
             }}
             onOpenChange={handleOpenChange}
-            open={open}
+            open={true}
           >
-            <a onClick={(e) => e.preventDefault()}>
+            <a className={style.h1} onClick={(e) => e.preventDefault()}>
               <Space>
                 Hover me
                 <DownOutlined />
@@ -149,7 +149,11 @@ const Input: React.FC = (props: InputProps) => {
             onOpenChange={handleOpenChange1}
             open={open1}
           >
-            <a key={123} onClick={(e) => e.preventDefault()}>
+            <a
+              className={style.h1}
+              key={123}
+              onClick={(e) => e.preventDefault()}
+            >
               <Space>
                 Hover me
                 <DownOutlined />
@@ -162,16 +166,18 @@ const Input: React.FC = (props: InputProps) => {
               items: items2,
               selectable: true,
               defaultSelectedKeys: ["1"],
-              style: {
-                backgroundColor: "red !important",
-                color: "black !important",
-              },
               multiple: true,
+              onSelect: (keys) => console.log(keys),
+              onDeselect: (keys) => console.log(keys),
             }}
             onOpenChange={handleOpenChange2}
-            open={true}
+            open={open2}
           >
-            <a key={123} onClick={(e) => e.preventDefault()}>
+            <a
+              className={style.h1}
+              key={123}
+              onClick={(e) => e.preventDefault()}
+            >
               <Space>
                 Hover me
                 <DownOutlined />

@@ -1,0 +1,55 @@
+.navbar{
+    width: 100%;
+    
+    .container{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 40px 0;
+
+        nav{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+
+            ul{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+
+                li{
+                    a{
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 18px;
+                        line-height: 22px;
+                        color: #0A0311;
+                    }
+                }
+            }
+        }
+    }
+
+    .line{
+        position: relative;
+        width: 100%;
+        height: 1px;
+        background-color: var(--primary);
+
+        .dot{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            transform: translateY(-50%);
+        }
+    }
+}

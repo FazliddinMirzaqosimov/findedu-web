@@ -13,7 +13,9 @@ function Footer() {
   return (
     <footer className={css.footer}>
         <div className={css.container}>
-            <Image src={logo} alt='Footer-logo'/>
+            <Link href='#'>
+                <Image src={logo} alt='Footer-logo'/>
+            </Link>
 
             <nav>
                 <ul className={css.mainLinks}>

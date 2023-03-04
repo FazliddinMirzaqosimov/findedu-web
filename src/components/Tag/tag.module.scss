@@ -1,0 +1,52 @@
+$blue:#461773;
+//for blue tag
+.tag_blue{
+  border: 1px solid $blue;
+  border-radius: 30px;
+  padding: 6.5px 20px;
+  background-color: transparent;
+  cursor: pointer;
+  p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: $blue;
+  }
+
+
+  &:hover{
+    background-color: var(--primary);
+
+    p{
+      color: white;
+    }
+  }
+}
+//for black tag
+
+.tag_black{
+  border: 1px solid var(--text);
+  border-radius: 30px;
+  padding: 6.5px 20px;
+  background-color: transparent;
+  cursor: pointer;
+  p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--text);
+  }
+
+
+  &:hover{
+    background-color: var(--primary);
+
+    p{
+      color: white;
+    }
+  }
+}

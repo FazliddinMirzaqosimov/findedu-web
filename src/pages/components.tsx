@@ -1,39 +1,82 @@
 import Counter from "@/components/counter/Counter";
-import Input from "@/components/Input/Input";
+import Input from "@/components/Input";
 import React from "react";
 import Tag from "@/components/Tag/tag";
-import style from '@/styles/components.module.scss'
+import style from "@/styles/components.module.scss";
+import { Space } from "antd";
+import ImageViewer from "@/components/ImageViewer/ImageViewer";
+import Courses from "@/components/courses/Courses";
+import Carusel from "../components/carusel/carusel";
 import Button from "@/components/Button";
-import {Space} from "antd";
-import Layout from "@/components/Layout";
-
 const Components = () => {
-    return (
+  return (
+    <div>
+      <Space direction={"vertical"} size={[10, 150]}>
+        <Tag text={"tag"} color={"blue"} />
+
+        <Input dropdown={[
+            {
+              options: [
+                "Barchasi",
+                "Toshkent",
+                "Samarqand",
+                "Buxoro",
+                "Sirdaryo",
+                "Jizzax",
+                "Qashqadaryo",
+                "Andijon",
+                "Namangan",
+                "Farg’ona",
+                "Surxondaryo",
+                "Xorazm",
+                "Navoiy",
+                "Qoraqalpog’iston Respublikasi",
+              ],
+              name: "Mintaqa",
+            },
+            {
+              options: [
+                "Barchasi",
+                "Toshkent",
+                "Samarqand",
+                "Buxoro",
+                "Sirdaryo",
+                "Jizzax",
+                "Qashqadaryo",
+                "Andijon",
+                "Namangan",
+                "Farg’ona",
+                "Surxondaryo",
+                "Xorazm",
+                "Navoiy",
+                "Qoraqalpog’iston Respublikasi",
+              ],
+              name: "Daraja",
+            },
+          ]}
+          placeholder={"Kasb, fan yoki o’quv markaz nomini kiriting..."}
+          button={"Qidirish"}
+        />
+
+        <Counter
+          options={[
+            { count: 345, label: "Ro’yhatdan o’tkan o’quv markazlar" },
+            { count: 345, label: "Ro’yhatdan o’tkan o’quv markazlar" },
+            { count: 345, label: "Ro’yhatdan o’tkan o’quv markazlar" },
+          ]}
+        />
+        <ImageViewer />
+        <Courses />
+        <Carusel length={3} />
         <div>
-            <Layout>
-                <Space direction={"vertical"} size={[10,150]}>
-                    <Input/>
-                    <Tag text={'tag'} color={'blue'}/>
-
-                    <Counter
-                        options={[
-                            {count: 345, label: "Ro’yhatdan o’tkan o’quv markazlar"},
-                            {count: 345, label: "Ro’yhatdan o’tkan o’quv markazlar"},
-                            {count: 345, label: "Ro’yhatdan o’tkan o’quv markazlar"},
-                        ]}
-                    />
-
-                    <div>
-                        <Button label='Chiqish' type='primary' border='full' href="/" />
-                        <Button label="Ro'yhatdan o'tish" type='secondary' border='full' />
-                        <Button label="Ro'yhatdan o'tish" type='primary' border='half' width />
-                        <Button label="Ro'yhatdan o'tish" type='secondary' border='full' disable />
-                        <Button label="Ro'yhatdan o'tish" type='primary' border='full' disable />
-                    </div>
-                </Space>
-            </Layout>
+          <Button label="Hello" border='full' type='primary' href="/home" />
+          <Button label='Kirish' border='full' type='primary' onClick={() => console.log("Hello")} />
+          <Button label="Ro'yhatdan o'tish" border='full' type='secondary'  />
+          <Button label="Ro'yhatdan o'tish" border='half' type='secondary' width />
         </div>
-    );
+      </Space>
+    </div>
+  );
 };
 
 export default Components;

@@ -8,8 +8,8 @@ import MyButton from "./components/Button";
 function SinovJoyi() {
   return (
     <div>
-        SinovJoyi
-        <Link href="/components">Components</Link>
+      SinovJoyi
+      <Link href="/components">Components</Link>
     </div>
   );
 }

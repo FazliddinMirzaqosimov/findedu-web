@@ -4,35 +4,25 @@ import React from "react";
 import styles from "./breadcrumb.module.scss";
 
 type breadcrumbProps = {
-  path?: { title: string; link: string }[];
+  paths: { title: string; link: string }[];
 };
 
-function Breadcrumb({ path }: breadcrumbProps) {
+function Breadcrumb({ paths }: breadcrumbProps) {
   return (
     <ul className={styles.breadcrumb}>
-      {" "}
       <li>
         <Link href="/">Bosh sahifa</Link>
       </li>
-      {path ? (
-        path.map((page) => {
-          return (
-            <>
-              <ArrowRightOutlined />
-              <li>
-                <Link href={page.link}>{page.title}</Link>
-              </li>
-            </>
-          );
-        })
-      ) : (
-        <>
-          <ArrowRightOutlined />
-          <li>
-            <Link href="/">O’quv markazlar</Link>{" "}
-          </li>
-        </>
-      )}
+      {paths.map((page) => {
+        return (
+          <>
+            <ArrowRightOutlined />
+            <li>
+              <Link href={page.link}>{page.title}</Link>
+            </li>
+          </>
+        );
+      })}
     </ul>
   );
 }

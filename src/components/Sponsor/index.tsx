@@ -20,13 +20,10 @@ function Sponsor({
   ...rest
 }: sponsorProps) {
   return (
-    <Link
-      href={href}
-      className={styles.sponsor + " " + className}
-      style={style}
-      {...rest}
-    >
-      <Image width={100} height={100} src={src} alt={alt} />
+    <Link href={href}>
+      <a className={styles.sponsor + " " + className} style={style} {...rest}>
+        <Image width={1000} height={500} src={src} alt={alt} />
+      </a>
     </Link>
   );
 }

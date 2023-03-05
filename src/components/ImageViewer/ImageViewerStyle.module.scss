@@ -1,0 +1,40 @@
+.img{
+    &__div{
+        position: relative;
+        display: inline-block;
+    }
+    &__psev{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        // z-index: 5;
+        // background-color: black;
+    }
+}
+.customizeMask{
+    opacity: 0;
+}
+.d{
+    display: inline-block;
+}
+.swiperSlide{
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    height: calc((100% - 30px) / 2) !important;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mySwiper{
+
+    width: 1300px;
+    height: 565px;
+    margin-left: auto;
+    margin-right: auto;
+    // autoplay: {
+    //     delay: 1000,
+    //   }
+}

@@ -8,6 +8,7 @@ import ImageViewer from "@/components/ImageViewer/ImageViewer";
 import Courses from "@/components/courses/Courses";
 import Carusel from "../components/carusel/carusel";
 import Breadcrumb from "@/components/Breadcrumb";
+import Button from "@/components/Button";
 const Components = () => {
   return (
     <div>
@@ -70,6 +71,22 @@ const Components = () => {
         <ImageViewer />
         <Courses />
         <Carusel length={3} />
+        <div>
+          <Button label="Hello" border="full" type="primary" href="/home" />
+          <Button
+            label="Kirish"
+            border="full"
+            type="primary"
+            onClick={() => console.log("Hello")}
+          />
+          <Button label="Ro'yhatdan o'tish" border="full" type="secondary" />
+          <Button
+            label="Ro'yhatdan o'tish"
+            border="half"
+            type="secondary"
+            width
+          />
+        </div>
       </Space>
     </div>
   );

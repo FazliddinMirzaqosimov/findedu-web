@@ -7,9 +7,11 @@ import { Space } from "antd";
 import ImageViewer from "@/components/ImageViewer/ImageViewer";
 import Courses from "@/components/courses/Courses";
 import Carusel from "../components/carusel/carusel";
+import Breadcrumb from "@/components/Breadcrumb";
 const Components = () => {
   return (
     <div>
+      <Breadcrumb paths={[{ title: "O'quv Markazlari", link: "/" }]} />
       <Space direction={"vertical"} size={[10, 150]}>
         <Tag text={"tag"} color={"blue"} />
 

@@ -3,12 +3,10 @@ import DropDown from "./DropDown";
 import styles from "./style.module.scss";
 
 type InputMainProps = {
-  dropdown: [
-    {
-      options: string[];
-      name: string;
-    }
-  ];
+  dropdown: {
+    options: string[];
+    name: string;
+  }[];
 
   button?: string | boolean;
 

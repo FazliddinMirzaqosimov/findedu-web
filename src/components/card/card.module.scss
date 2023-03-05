@@ -1,0 +1,58 @@
+@import "../../styles/variables.scss";
+.card {
+	width: $w_100;
+	height: auto;
+	border: 1px solid;
+	border-radius: $br_r_30;
+	padding: 30px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem;
+	position: relative;
+	margin: 1%;
+	&:hover {
+		border: 1px solid $primary;
+		box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+	}
+	&:hover .url {
+		border: 1px solid $primary;
+		color: $light;
+		background: $primary;
+	}
+	&:hover h2 {
+		color: $primary;
+	}
+	&__row {
+		width: 100%;
+		display: flex;
+		// align-items: flex-start;
+		justify-content: space-between;
+		.url {
+			width: 32px;
+			height: 32px;
+			border-radius: $br_r_50pr;
+			border: 2px solid;
+			color: $dark;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+		}
+		.imgDiv {
+			max-width: 35%;
+			width: 30%;
+			position: relative;
+			.img {
+				display: inline-block;
+				position: relative;
+			}
+		}
+	}
+	.score {
+		color: $secondary;
+		font-family: $font_texts;
+		font-weight: bold;
+	}
+}

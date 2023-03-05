@@ -1,6 +1,5 @@
 import Link from "next/link";
 import css from "./button.module.scss";
-
 interface ButtonProps {
 	label: string;
 	disable?: boolean;
@@ -40,6 +39,7 @@ function Button({
 	}
 
 	return MyButton;
+
 }
 
 export default Button;

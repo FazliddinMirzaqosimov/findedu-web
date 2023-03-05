@@ -6,7 +6,7 @@ import style from '@/styles/components.module.scss'
 import {Space} from "antd";
 import ImageViewer from "@/components/ImageViewer/ImageViewer";
 import Courses from "@/components/courses/Courses";
-
+import Carusel from "../components/carusel/carusel"
 const Components = () => {
     return (
         <div>
@@ -23,6 +23,7 @@ const Components = () => {
                 />
                 <ImageViewer />
                 <Courses />
+                <Carusel length={3}/>
             </Space>
         </div>
     );

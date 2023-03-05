@@ -13,8 +13,8 @@ type InputMainProps = {
   button?: string | boolean;
 };
 
-const index: React.FC<InputMainProps> = ({ dropdown, button }) => {
-  const [input, setInput] = useState("");
+const Index: React.FC<InputMainProps> = ({ dropdown, button }) => {
+  const [input, setInput] = useState<string>("");
 
   return (
     <div className={styles.mainDiv}>
@@ -31,4 +31,4 @@ const index: React.FC<InputMainProps> = ({ dropdown, button }) => {
   );
 };
 
-export default index;
+export default Index;

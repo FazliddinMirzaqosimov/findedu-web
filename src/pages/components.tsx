@@ -40,6 +40,12 @@ const Components = () => {
 							],
 							name: "Mintaqa",
 						},
+					]}
+					placeholder={"Kasb, fan yoki o’quv markaz nomini kiriting..."}
+					button={"Izlash"}
+				/>
+				<Input
+					dropdown={[
 						{
 							options: [
 								"Barchasi",
@@ -57,11 +63,86 @@ const Components = () => {
 								"Navoiy",
 								"Qoraqalpog’iston Respublikasi",
 							],
-							name: "Daraja",
+							name: "Mintaqa",
+						},
+						{
+							options: [
+								"Barchasi",
+								"Toshkent",
+								"Samarqand",
+								"Buxoro",
+								"Sirdaryo",
+								"Jizzax",
+								"Qashqadaryo",
+								"Andijon",
+								"Namangan",
+								"Farg’ona",
+								"Surxondaryo",
+								"Xorazm",
+								"Navoiy",
+								"Qoraqalpog’iston Respublikasi",
+							],
+							name: "Darajasi",
+						},
+						{
+							options: [
+								"Barchasi",
+								"Toshkent",
+								"Samarqand",
+								"Buxoro",
+								"Sirdaryo",
+								"Jizzax",
+								"Qashqadaryo",
+								"Andijon",
+								"Namangan",
+								"Farg’ona",
+								"Surxondaryo",
+								"Xorazm",
+								"Navoiy",
+								"Qoraqalpog’iston Respublikasi",
+							],
+							name: "O'qish turi",
+						},
+						{
+							options: [
+								"Barchasi",
+								"Toshkent",
+								"Samarqand",
+								"Buxoro",
+								"Sirdaryo",
+								"Jizzax",
+								"Qashqadaryo",
+								"Andijon",
+								"Namangan",
+								"Farg’ona",
+								"Surxondaryo",
+								"Xorazm",
+								"Navoiy",
+								"Qoraqalpog’iston Respublikasi",
+							],
+							name: "Yonalish",
+						},
+						{
+							options: [
+								"Barchasi",
+								"Toshkent",
+								"Samarqand",
+								"Buxoro",
+								"Sirdaryo",
+								"Jizzax",
+								"Qashqadaryo",
+								"Andijon",
+								"Namangan",
+								"Farg’ona",
+								"Surxondaryo",
+								"Xorazm",
+								"Navoiy",
+								"Qoraqalpog’iston Respublikasi",
+							],
+							name: "Narxi",
 						},
 					]}
 					placeholder={"Kasb, fan yoki o’quv markaz nomini kiriting..."}
-					button={"Qidirish"}
 				/>
 
 				<Counter
@@ -71,7 +152,7 @@ const Components = () => {
 						{ count: 345, label: "Ro’yhatdan o’tkan o’quv markazlar" },
 					]}
 				/>
-				{/* <ImageViewer /> */}
+				<ImageViewer />
 				<Courses />
 				<Carusel length={3} />
 				<div>

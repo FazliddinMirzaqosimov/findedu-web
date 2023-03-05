@@ -54,6 +54,8 @@ const Components = () => {
               name: "Daraja",
             },
           ]}
+          placeholder={"Kasb, fan yoki o’quv markaz nomini kiriting..."}
+          button={"Qidirish"}
         />
 
         <Counter

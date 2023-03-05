@@ -1,6 +1,5 @@
 import Counter from "@/components/counter/Counter";
 import Input from "@/components/Input";
-import React from "react";
 import Tag from "@/components/Tag/tag";
 import style from "@/styles/components.module.scss";
 import { Space } from "antd";
@@ -72,7 +71,7 @@ const Components = () => {
 						{ count: 345, label: "Ro’yhatdan o’tkan o’quv markazlar" },
 					]}
 				/>
-				<ImageViewer />
+				{/* <ImageViewer /> */}
 				<Courses />
 				<Carusel length={3} />
 				<div>

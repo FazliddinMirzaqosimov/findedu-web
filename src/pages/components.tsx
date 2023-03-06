@@ -17,6 +17,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sponsor from "@/components/Sponsor";
 import DynamicList from "@/components/Dynamic section/dynamic-list";
+import { ImagesData, ImagesData2 } from "@/components/ImageViewer/imagesData/imagesdata";
 
 const DynamicSectionArr = [
   {
@@ -228,7 +229,9 @@ const Components = () => {
             { count: 345, label: "Ro’yhatdan o’tkan o’quv markazlar" },
           ]}
         />
-        <ImageViewer />
+        <ImageViewer data={ImagesData2}/>
+		<ImageViewer data={ImagesData} />
+		<ImageViewer width={1300} height={600} src='https://c4.wallpaperflare.com/wallpaper/500/442/354/outrun-vaporwave-hd-wallpaper-thumb.jpg' />
         <Courses />
         <Carusel length={3} />
         <div>

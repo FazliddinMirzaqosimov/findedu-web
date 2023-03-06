@@ -6,7 +6,7 @@ import styles from "./breadcrumb.module.scss";
 
 type breadcrumbProps = {
   title: string;
-  link: string;
+  link?: string;
 };
 
 function Breadcrumb() {
@@ -24,12 +24,12 @@ function Breadcrumb() {
       <li>
         <Link href="/">Bosh sahifa</Link>
       </li>
-      {paths.map((page) => {
+      {paths.map(({ title, link = "#" }) => {
         return (
           <>
             <ArrowRightOutlined />
             <li>
-              <Link href={page.link}>{page.title}</Link>
+              <Link href={link}>{title}</Link>
             </li>
           </>
         );

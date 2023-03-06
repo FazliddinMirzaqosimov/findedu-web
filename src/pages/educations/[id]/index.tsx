@@ -1,7 +1,8 @@
+import Breadcrumb from "@/components/Breadcrumb";
 import React from "react";
 
 function Edu() {
-  return <div>Edu</div>;
+  return <div></div>;
 }
 
 export default Edu;

@@ -1,30 +1,16 @@
-import {GoogleMap, Marker, useLoadScript} from "@react-google-maps/api";
-import {useMemo, useState} from "react";
+interface BranchMap{
+    map:string
+}
 
+const BranchMap = ({map}:BranchMap) => {
 
-
-const BranchMap = () => {
-    const [libraries, setLibraries] = useState<("places" | "drawing" | "geometry" | "localContext" | "visualization")[]>(['places']);
-
-    const {isLoaded}=useLoadScript({
-        googleMapsApiKey:'AIzaSyBnEFRf1VbLnmDHkWmS2vEFzV7HkEsRtWU',
-        libraries
-    })
-
-    if(!isLoaded) return <div>Loading..</div>
     return (
-        <div className="map-container">
-            <GoogleMap
-                mapContainerStyle={{ height: '100%', width: '100%' }}
-                zoom={8}
-                center={{ lat: 41.259196, lng: 69.240074 }}
 
 
-            >
-                <Marker position={{ lat: 41.259196, lng: 69.240074 }}
-                />
-            </GoogleMap>
-        </div>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1193.1338651403928!2d69.24771519852969!3d41.22170404699893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sru!2s!4v1678114393083!5m2!1sru!2s"
+            width="600" height="450" style={{border:"0"}}  loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"></iframe>
     )
 }
 

@@ -48,13 +48,13 @@ const Branch = ({branch}: BranchI) => {
 
                 >
                     <Panel header={branch.name} key="1" showArrow={false} extra={<img className={'image'}
-                                                                                      src={"https://marketing.uz/uploads/works/covers/8bd79c07ebc2619902f950153e9d40d6.jpg"}/>}
+                     src={"https://marketing.uz/uploads/works/covers/8bd79c07ebc2619902f950153e9d40d6.jpg"}/>}
                     >
                         <Space align={"start"} direction={"vertical"} size={[0, 20]}>
                             <p className={style.content_adress}><span>Joylashgan joyi:</span> {branch.mainAddress}</p>
                             <DynamicList sectionList={telBranch}/>
 
-                            <BranchMap/>
+                            <BranchMap map={branch.onMap}/>
                         </Space>
                     </Panel>
                     <span className={'ant-collapse-right-span'}>

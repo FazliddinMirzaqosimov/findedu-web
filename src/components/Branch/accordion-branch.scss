@@ -1,0 +1,78 @@
+.ant-collapse {
+  border-radius: 0;
+  position: relative;
+  .ant-collapse-header {
+    padding: 24px 16px;
+    background: rgba(70, 23, 115, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center !important;
+    overflow-x: hidden;
+    &::before {
+      position: absolute;
+      top: 0;
+      right: -30px;
+      content: "";
+      width: 100%;
+      height: 2px;
+      z-index: 10;
+      background-color: var(--primary);
+    }
+
+
+    .ant-collapse-header-text {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 39px;
+      color: var(--primary);
+
+
+    }
+
+    .ant-collapse-extra {
+      .image {
+        width: 85px;
+        height: 65px;
+      }
+
+    }
+
+
+
+  }
+
+  .ant-collapse-right-span{
+    position: absolute;
+    top: -8px;
+    left: 0;
+    z-index: 50;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .ant-collapse{
+    .ant-collapse-header {
+      padding: 20px 12px;
+
+
+      .ant-collapse-header-text {
+        font-size: 25px;
+      }
+    }
+
+  }
+}
+
+@media (max-width: 480px) {
+  .ant-collapse{
+    .ant-collapse-header {
+      .ant-collapse-header-text {
+        font-size: 18px;
+
+      }
+    }
+  }
+}

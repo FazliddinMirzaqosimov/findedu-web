@@ -1,7 +1,6 @@
 import Counter from "@/components/counter/Counter";
 import Input from "@/components/Input";
 import Tag from "@/components/Tag/tag";
-import style from "@/styles/components.module.scss";
 import { Space } from "antd";
 import Card from "@/components/card";
 import img1 from "../assets/media/Najot_Talim-01.png";
@@ -12,6 +11,73 @@ import Courses from "@/components/courses/Courses";
 import Carusel from "../components/carusel/carusel";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
+import DynamicSection from "@/components/Dynamic section";
+import Branch from "@/components/Branch";
+
+const DynamicSectionArr = [
+  {
+    title: "yonalish",
+    tags: [
+      {
+        text: "Marketing",
+      },
+      {
+        text: "Dasturlash",
+      },
+      {
+        text: "Dizayn",
+      },
+      {
+        text: "Marketing",
+      },
+      {
+        text: "Dasturlash",
+      },
+      {
+        text: "Dizayn",
+      },
+      {
+        text: "Marketing",
+      },
+      {
+        text: "Dasturlash",
+      },
+      {
+        text: "Dizayn",
+      },
+    ],
+  },
+  {
+    title: "O’qish turi",
+    tags: [
+      {
+        text: "Offline",
+      },
+    ],
+  },
+  {
+    title: "Telefon raqam",
+    tags: [
+      {
+        text: "+998921234567",
+      },
+    ],
+  },
+];
+
+const branch1 = {
+  name: "Tashkent branch",
+  mainAddress: "123 Main Street, Tashkent, Uzbekistan",
+  onMap: "https://www.google.com/maps/place/123+Main+St,+Tashkent,+Uzbekistan/",
+  phones: ["+998 71 123 45 67", "+998 99 876 54 32", "+998 99 876 54 32"],
+};
+const branch2 = {
+  name: "Sergeli branch",
+  mainAddress: "123 Main Street, Tashkent, Uzbekistan",
+  onMap: "https://www.google.com/maps/place/123+Main+St,+Tashkent,+Uzbekistan/",
+  phones: ["+998 71 123 45 67", "+998 99 876 54 32", "+998 99 876 54 32"],
+};
+
 const Components = () => {
   return (
     <div>
@@ -19,6 +85,9 @@ const Components = () => {
       <Space direction={"vertical"} size={[10, 150]}>
         <Tag text={"tag"} color={"blue"} />
 
+        <DynamicSection section={DynamicSectionArr} />
+        <Branch branch={branch1} />
+        <Branch branch={branch2} />
         <Input
           dropdown={[
             {

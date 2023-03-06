@@ -12,7 +12,7 @@ import Button from "@/components/Button";
 const Components = () => {
   return (
     <div>
-      <Breadcrumb paths={[{ title: "O'quv Markazlari", link: "/" }]} />
+      <Breadcrumb />
       <Space direction={"vertical"} size={[10, 150]}>
         <Tag text={"tag"} color={"blue"} />
 

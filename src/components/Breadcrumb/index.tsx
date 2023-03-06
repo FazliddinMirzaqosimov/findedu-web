@@ -1,13 +1,24 @@
 import { ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import styles from "./breadcrumb.module.scss";
 
 type breadcrumbProps = {
-  paths: { title: string; link: string }[];
+  title: string;
+  link: string;
 };
 
-function Breadcrumb({ paths }: breadcrumbProps) {
+function Breadcrumb() {
+  const paths: breadcrumbProps[] = [];
+  const router = useRouter();
+
+  if (router.asPath === "/educations") {
+    paths.push({ title: "O'quv markazlari", link: "/educations" });
+  } else if (router.asPath.startsWith("/about")) {
+    paths.push({ title: "Website haqida", link: "/about" });
+  }
+
   return (
     <ul className={styles.breadcrumb}>
       <li>

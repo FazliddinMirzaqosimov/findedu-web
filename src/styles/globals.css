@@ -22,7 +22,7 @@ body {
   --text:#0A0311;
 }
 
-/* ::-webkit-scrollbar
+::-webkit-scrollbar
 {
 	width: 11px;
 	background-color: white;
@@ -38,7 +38,7 @@ body {
      height: 11px;
 	border-radius: 10px;
 	background-color: var(--primary);
-} */
+}
 .map-container{
   width: 500px;
   height: 600px;

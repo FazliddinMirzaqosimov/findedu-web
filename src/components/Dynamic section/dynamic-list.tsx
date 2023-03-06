@@ -14,10 +14,6 @@ const DynamicList = ({sectionList}: List) => {
                 <p className={style.title}>{sectionList.title} :</p>
                 <Space align={"center"} size={20} wrap={true}>
                     {
-                        sectionList.title === 'Telefon raqam' ?
-                            sectionList.tags.map((tag, ind) => (
-                                <Tag color={'blue'} text={tag.text} tel={true} key={ind}/>
-                            )) :
                             sectionList.tags.map((tag, ind) => (
                                 <Tag color={'blue'} text={tag.text}  key={ind}/>
                             ))

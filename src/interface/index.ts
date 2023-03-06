@@ -10,7 +10,7 @@ export interface TagTextI {
 
 export interface TagI extends TagTextI {
     color: 'black' | 'blue'
-    tel?:boolean
+
 }
 export interface DynamicSectionI {
     section:SectionListI[]

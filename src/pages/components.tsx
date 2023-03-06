@@ -11,12 +11,12 @@ import Courses from "@/components/courses/Courses";
 import Carusel from "../components/carusel/carusel";
 import Breadcrumb from "@/components/Breadcrumb";
 import Button from "@/components/Button";
-import DynamicSection from "@/components/Dynamic section";
 import Branch from "@/components/Branch";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sponsor from "@/components/Sponsor";
+import DynamicList from "@/components/Dynamic section/dynamic-list";
 
 const DynamicSectionArr=[
   {
@@ -98,7 +98,9 @@ const Components = () => {
 			<Space direction={"vertical"} size={[10, 150]}>
 				<Tag text={"tag"} color={"blue"} />
 
-				<DynamicSection section={DynamicSectionArr}/>
+				<DynamicList sectionList={DynamicSectionArr[0]}/>
+				<DynamicList sectionList={DynamicSectionArr[1]}/>
+				<DynamicList sectionList={DynamicSectionArr[2]}/>
 				<Branch branch={branch1}/>
 				<Branch branch={branch2}/>
 				<Input

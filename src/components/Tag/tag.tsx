@@ -1,16 +1,15 @@
 import style from './tag.module.scss'
+import {TagI} from "@/interface";
 
-interface TagI{
-    text:string
-    color: 'black' | 'blue'
-}
 
-const Tag = ({text,color}:TagI) => {
-    return(
+const Tag = ({text, color}: TagI) => {
+    return (
         <>
-            <button className={color==='blue' ? style.tag_blue : style.tag_black}>
-               <p >{text}</p>
-            </button>
+            {
+                    <button className={color === 'blue' ? style.tag_blue : style.tag_black}>
+                        <p>{text}</p>
+                    </button>
+            }
         </>
     )
 }

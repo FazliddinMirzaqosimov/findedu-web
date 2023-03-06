@@ -4,62 +4,61 @@ import styles from "./heading.module.scss";
 type FontSizes = "sm" | "md" | "lg";
 
 interface IProps {
-  title: string;
-  titleSize: FontSizes;
-  highlightedWord?: string | boolean;
-  description?: string;
-  children?: React.ReactNode;
+	title: string;
+	titleSize: FontSizes;
+	highlightedWord?: string | boolean;
+	description?: string;
+	children?: React.ReactNode;
 }
 
 const Heading: React.FC<IProps> = ({
-  title,
-  description,
-  highlightedWord,
-  titleSize,
-  children,
+	title,
+	description,
+	highlightedWord,
+	titleSize,
+	children,
 }) => {
-  console.log("render");
-  let titleContent: React.ReactNode;
+	console.log("render");
+	let titleContent: React.ReactNode;
 
-  if (!highlightedWord) {
-    titleContent = <>{title}</>;
-  } else if (highlightedWord === true) {
-    titleContent = <span className={styles.highlight}>{title}</span>;
-  } else {
-    const titleWords = title.split(" ");
-    const wordsToHighlight = highlightedWord.split(" ");
-    titleContent = titleWords.map((word, index) => {
-      if (wordsToHighlight.includes(word)) {
-        return (
-          <span key={index} className={styles.highlight}>
-            {word}{" "}
-          </span>
-        );
-      } else {
-        return <React.Fragment key={index}>{word} </React.Fragment>;
-      }
-    });
-  }
+	if (!highlightedWord) {
+		titleContent = <>{title}</>;
+	} else if (highlightedWord === true) {
+		titleContent = <span className={styles.highlight}>{title}</span>;
+	} else {
+		const titleWords = title.split(" ");
+		const wordsToHighlight = highlightedWord.split(" ");
+		titleContent = titleWords.map((word, index) => {
+			if (wordsToHighlight.includes(word)) {
+				return (
+					<span key={index} className={styles.highlight}>
+						{word}{" "}
+					</span>
+				);
+			} else {
+				return <React.Fragment key={index}>{word} </React.Fragment>;
+			}
+		});
+	}
 
-  return (
-    <div>
-      <h2 className={styles[titleSize]}>{titleContent}</h2>
-      {children && <div className={styles.childWrapper}>{children}</div>}
-      <p
-        className={
-          titleSize === "sm" ? styles.description_sm : styles.description_md
-        }
-      >
-        {description}
-      </p>
-    </div>
-  );
+	return (
+		<div>
+			<h2 className={styles[titleSize]}>{titleContent}</h2>
+			{children && <div className={styles.childWrapper}>{children}</div>}
+			<p
+				className={
+					titleSize === "sm" ? styles.description_sm : styles.description_md
+				}
+			>
+				{description}
+			</p>
+		</div>
+	);
 };
 
 export default memo(Heading);
 
 /* 
-
 1)`title`(required) prop asosiy title uchun.
 
 2) `titleSize`(required) prop title-ning fontsize-i uchun. Qiymat sifatida "sm", "md", "lg" lardan birini oladi.

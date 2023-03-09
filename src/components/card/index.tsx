@@ -37,7 +37,7 @@ const Card: React.FC<cardOptions> = ({
 							className={style.img}
 							layout="fill"
 							width={100}
-							height={70}
+							height={100}
 							src={imgUrl}
 							alt="company logo"
 						/>

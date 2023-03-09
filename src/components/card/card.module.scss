@@ -27,7 +27,6 @@
 	&__row {
 		width: 100%;
 		display: flex;
-		// align-items: flex-start;
 		justify-content: space-between;
 		.url {
 			width: 32px;
@@ -39,10 +38,12 @@
 			align-items: center;
 			justify-content: center;
 			text-align: center;
+			cursor: pointer;
 		}
 		.imgDiv {
 			max-width: 35%;
 			width: 30%;
+			height: auto;
 			position: relative;
 			.img {
 				display: inline-block;

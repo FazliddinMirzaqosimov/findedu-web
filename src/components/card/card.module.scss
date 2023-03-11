@@ -14,7 +14,7 @@
 	margin: 1% 0;
 	&:hover {
 		border: 1px solid $primary;
-		box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+		box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 	}
 	&:hover .url {
 		border: 1px solid $primary;
@@ -27,7 +27,6 @@
 	&__row {
 		width: 100%;
 		display: flex;
-		// align-items: flex-start;
 		justify-content: space-between;
 		.url {
 			width: 32px;
@@ -39,20 +38,27 @@
 			align-items: center;
 			justify-content: center;
 			text-align: center;
+			cursor: pointer;
 		}
 		.imgDiv {
-			max-width: 35%;
+			max-width: 150px;
+			max-height: 150px;
+			height: 100px;
 			width: 30%;
 			position: relative;
+			align-self: flex-end;
 			.img {
+				object-fit: cover;
 				display: inline-block;
 				position: relative;
+				cursor: pointer;
 			}
 		}
-	}
-	.score {
-		color: $secondary;
-		font-family: $font_texts;
-		font-weight: bold;
+		.score {
+			color: $secondary;
+			font-family: $font_texts;
+			font-weight: bold;
+			align-self: flex-end;
+		}
 	}
 }

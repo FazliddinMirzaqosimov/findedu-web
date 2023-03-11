@@ -1,24 +1,36 @@
 import { ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import path from "path";
+import React, { useEffect } from "react";
 import styles from "./breadcrumb.module.scss";
 
 type breadcrumbProps = {
-  paths: { title: string; link: string }[];
+  title: string;
+  link?: string;
 };
 
-function Breadcrumb({ paths }: breadcrumbProps) {
+function Breadcrumb() {
+  const paths: breadcrumbProps[] = [];
+  const router = useRouter();
+  router.pathname
+    .slice(1)
+    .split("/")
+    .forEach((el) => {
+      el && paths.push({ title: `breadcrump.${el}`, link: el });
+    });
+
   return (
     <ul className={styles.breadcrumb}>
       <li>
-        <Link href="/">Bosh sahifa</Link>
+        <Link href="/">{"breadcrumb.home"}</Link>
       </li>
-      {paths.map((page) => {
+      {paths.map(({ title, link = "#" }) => {
         return (
           <>
             <ArrowRightOutlined />
             <li>
-              <Link href={page.link}>{page.title}</Link>
+              <Link href={link}>{title}</Link>
             </li>
           </>
         );

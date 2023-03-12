@@ -3,7 +3,7 @@ import DropDown from "./DropDown";
 import styles from "./style.module.scss";
 
 type InputMainProps = {
-  dropdown: {
+  dropdown?: {
     options: string[];
     name: string;
   }[];
@@ -38,7 +38,7 @@ const Index: React.FC<InputMainProps> = ({ dropdown, button, placeholder }) => {
         }}
         className={styles.div2nd}
       >
-        {dropdown.map((drop, i) => {
+        {dropdown?.map((drop, i) => {
           console.log(drop);
           return (
             <DropDown

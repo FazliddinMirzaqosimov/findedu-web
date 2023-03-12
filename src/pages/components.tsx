@@ -17,6 +17,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sponsor from "@/components/Sponsor";
 import DynamicList from "@/components/Dynamic section/dynamic-list";
+import {useRouter} from "next/router";
 import { ImagesData, ImagesData2 } from "@/components/ImageViewer/imagesData/imagesdata";
 import { CoursesData } from "@/components/courses/coursesData/coursesData";
 
@@ -85,12 +86,14 @@ const branch2 = {
 };
 
 const Components = () => {
-  return (
-    <div>
-      <Navbar />
-      {/* <Breadcrumb paths={[{ title: "O'quv Markazlari", link: "/" }]} /> */}
-      <Space direction={"vertical"} size={[10, 150]}>
-        <Tag text={"tag"} color={"blue"} />
+	const router=useRouter()
+	console.log(router)
+	return (
+		<div>
+			<Navbar/>
+			<Breadcrumb  />
+			<Space direction={"vertical"} size={[10, 150]}>
+				<Tag text={"tag"} color={"blue"} />
 
         <DynamicList sectionList={DynamicSectionArr[0]} />
         <DynamicList sectionList={DynamicSectionArr[1]} />

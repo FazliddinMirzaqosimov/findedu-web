@@ -305,7 +305,7 @@ function Edus() {
                   description={item.description}
                   score={item.score}
                   imgUrl={item.imgUrl}
-                  href={item.href}
+                  href={`/educations/${i}`}
                 />
               );
             } else {
@@ -317,7 +317,7 @@ function Edus() {
                     description={item.description}
                     score={item.score}
                     imgUrl={item.imgUrl}
-                    href={item.href}
+                    href={`/educations/${i}`}
                   />
                 );
               }

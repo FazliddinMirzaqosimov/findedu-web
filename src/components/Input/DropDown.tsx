@@ -33,7 +33,13 @@ const Dropdown: React.FC<DropdownProps> = ({ options, dropName }) => {
       onMouseEnter={toggleDropdown}
       onMouseLeave={toggleDropdown}
     >
-      <button className={styles.dropdown__button}>
+      <button
+        className={styles.dropdown__button}
+        style={{
+          borderLeft: isOpen ? "1px solid #461773" : "1px solid #0A0311",
+          color: isOpen ? "#461773" : "#0A0311",
+        }}
+      >
         {dropName} &nbsp;{" "}
         <ArrowRightOutlined
           rotate={isOpen ? 90 : 0}

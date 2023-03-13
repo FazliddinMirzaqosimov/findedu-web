@@ -8,10 +8,30 @@
 }
 
 .cards {
-  width: 100%;
+  width: 102%;
+  padding-right: 0.5%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  max-height: 800px;
+  overflow: auto;
+}
+
+.buttonDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  button {
+    cursor: pointer;
+    & > span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      span {
+        font-size: 16px;
+      }
+    }
+  }
 }
 
 @media (max-width: 1024px) {

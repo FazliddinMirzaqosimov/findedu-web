@@ -15,7 +15,6 @@ type InputMainProps = {
 
 const Index: React.FC<InputMainProps> = ({ dropdown, button, placeholder }) => {
   const [input, setInput] = useState<string>("");
-
   return (
     <div
       className={styles.mainDiv}

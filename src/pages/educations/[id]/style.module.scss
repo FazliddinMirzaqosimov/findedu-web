@@ -1,0 +1,61 @@
+.container {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.heroSection {
+  display: flex;
+  justify-content: space-between;
+  margin: 4rem 0;
+  max-width: 100%;
+}
+
+.dynamicList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin-top: 2rem;
+}
+
+.heroImg {
+  max-width: 40%;
+}
+
+.locationInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 8rem 0;
+}
+
+.iframeMap {
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  min-height: 300px;
+}
+
+@media (max-width: 1250px) {
+  .container {
+    width: 1100px;
+  }
+}
+@media (max-width: 1150px) {
+  .container {
+    width: 1000px;
+  }
+}
+@media (max-width: 1020px) {
+  .container {
+    width: 900px;
+  }
+}
+
+@media (max-width: 920px) {
+  .heroSection {
+    flex-direction: column-reverse;
+    margin: 3rem 0;
+    align-items: center;
+    text-align: center;
+  }
+}

@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import styles from "./style.module.scss";
 import { ArrowRightOutlined } from "@ant-design/icons";
-
-interface DropdownProps {
-  options: string[];
-  dropName: string;
-}
+import { DropdownProps } from "@/interface";
 
 const Dropdown: React.FC<DropdownProps> = ({ options, dropName }) => {
   const [isOpen, setIsOpen] = useState(false);

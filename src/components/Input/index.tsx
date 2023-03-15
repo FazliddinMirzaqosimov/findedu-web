@@ -1,10 +1,21 @@
 import { InputMainProps } from "@/interface";
-import { useState } from "react";
+import { setInputFilter } from "@/service/redux/Input";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux/";
 import DropDown from "./DropDown";
 import styles from "./style.module.scss";
 
 const Index: React.FC<InputMainProps> = ({ dropdown, button, placeholder }) => {
   const [input, setInput] = useState<string>("");
+
+  const dispatch = useDispatch();
+  const { filterState } = useSelector((state: any) => state.filter);
+
+  useEffect(() => {
+    dispatch(setInputFilter({ ...filterState, input: input }));
+    console.log(filterState);
+  }, [input]);
+
   return (
     <div
       className={styles.mainDiv}
@@ -28,7 +39,6 @@ const Index: React.FC<InputMainProps> = ({ dropdown, button, placeholder }) => {
         className={styles.div2nd}
       >
         {dropdown?.map((drop, i) => {
-          console.log(drop);
           return (
             <DropDown
               key={`${i}`}

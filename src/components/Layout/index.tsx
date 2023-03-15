@@ -10,9 +10,11 @@ function Layout({children}: LayoutProps) {
   return (
     <>
         <Navbar />
-        {
-            children
-        }
+          <div className="container">
+            {
+              children
+            }
+          </div>
         <Footer />
     </>
   )

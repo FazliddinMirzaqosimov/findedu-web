@@ -23,6 +23,7 @@ const Courses: FC<CourseProps> = ({ children, data }) => {
                 title={course?.title}
                 titleSize="sm"
                 description={course?.description}
+                highlightedWord
               >
                 <span className={s.card__tags}>
                   {course?.tags?.map((tag) => (

@@ -1,21 +1,10 @@
+import { InputMainProps } from "@/interface";
 import { useState } from "react";
 import DropDown from "./DropDown";
 import styles from "./style.module.scss";
 
-type InputMainProps = {
-  dropdown?: {
-    options: string[];
-    name: string;
-  }[];
-
-  button?: string | boolean;
-
-  placeholder?: string;
-};
-
 const Index: React.FC<InputMainProps> = ({ dropdown, button, placeholder }) => {
   const [input, setInput] = useState<string>("");
-
   return (
     <div
       className={styles.mainDiv}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from  './logo.svg'
 import Image from 'next/image'
 import css from './navbar.module.scss'
@@ -6,12 +6,43 @@ import Link from 'next/link'
 import Button from '../Button'
 
 function Navbar() {
+  const [active, setActive] = useState(false);
+  const [blur, setBlur] = useState(0);
+
+  const activate = () => {
+    if(active) {
+      setActive(false)
+    }else {
+      setActive(true)
+    }
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setBlur(window.scrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
-    <header className={css.navbar}>
-        <div className={css.container}>
+    <header className={`${css.navbar} ${blur > 300 && css.blur}`}>
+        <div className={`container ${css.container}`}>
             <Link href='#'>
                 <Image className={css.logo} src={logo} alt='Logo' />
             </Link>
+            <input type="checkbox" id="checkbox" />
+
+            <label htmlFor="checkbox" className={css.bg} onClick={activate}>
+            </label>
+
+            <label htmlFor="checkbox" className={`${css.bar} ${active && css.active}`} onClick={activate}>
+              <div className={css.line}></div>
+            </label>
 
             <nav>
                 <ul>

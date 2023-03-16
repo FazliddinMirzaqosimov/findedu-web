@@ -2,16 +2,15 @@ import React, { useState, useEffect } from "react";
 import styles from "./style.module.scss";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { DropdownProps } from "@/interface";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux/";
 import { setInputFilter } from "@/service/redux/Input";
+import { useAppDispatch, useAppSelector } from "@/service/redux/hooks";
 
 const Dropdown: React.FC<DropdownProps> = ({ options, dropName }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
-  const dispatch = useDispatch();
-  const { filterState } = useSelector((state: any) => state.filter);
+  const dispatch = useAppDispatch();
+  const { filterState } = useAppSelector((state) => state.filter);
 
   const toggleDropdown = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
@@ -35,6 +34,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, dropName }) => {
 
   useEffect(() => {
     dispatch(setInputFilter({ ...filterState, filter: selectedOptions }));
+    console.log(filterState);
   }, [selectedOptions.length]);
 
   return (

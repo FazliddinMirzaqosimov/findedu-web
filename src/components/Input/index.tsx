@@ -1,15 +1,16 @@
 import { InputMainProps } from "@/interface";
+import { useAppDispatch, useAppSelector } from "@/service/redux/hooks";
 import { setInputFilter } from "@/service/redux/Input";
+import { stat } from "fs";
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux/";
 import DropDown from "./DropDown";
 import styles from "./style.module.scss";
 
 const Index: React.FC<InputMainProps> = ({ dropdown, button, placeholder }) => {
   const [input, setInput] = useState<string>("");
 
-  const dispatch = useDispatch();
-  const { filterState } = useSelector((state: any) => state.filter);
+  const dispatch = useAppDispatch();
+  const { filterState } = useAppSelector((state) => state.filter);
 
   useEffect(() => {
     dispatch(setInputFilter({ ...filterState, input: input }));

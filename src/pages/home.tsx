@@ -156,8 +156,13 @@ const Home = () => {
             description="Platforma sizga xizmat qilishida bizga yordam bergan barcha hamkorlarimizga minnatdorchilik bildirimaz!"
           />
           <div className={style.content}>
-            {sponsors.map((item) => (
-              <Sponsor src={item.src} alt={item.alt} href={item.href} />
+            {sponsors.map((item, index) => (
+              <Sponsor
+                src={item.src}
+                alt={item.alt}
+                href={item.href}
+                key={index}
+              />
             ))}
           </div>
         </div>

@@ -290,31 +290,7 @@ function EducationPage() {
         dropdown={dropdown}
         placeholder={"Kasb, fan yoki o’quv markaz nomini kiriting..."}
       />
-      <Input
-        dropdown={[
-          {
-            options: [
-              "Barchasi",
-              "Toshkent",
-              "Samarqand",
-              "Buxoro",
-              "Sirdaryo",
-              "Jizzax",
-              "Qashqadaryo",
-              "Andijon",
-              "Namangan",
-              "Farg’ona",
-              "Surxondaryo",
-              "Xorazm",
-              "Navoiy",
-              "Qoraqalpog’iston Respublikasi",
-            ],
-            name: "Mintaqa",
-          },
-        ]}
-        placeholder={"Kasb, fan yoki o’quv markaz nomini kiriting..."}
-        button={"Izlash"}
-      />
+
       <Breadcrumb />
 
       <DynamicList sectionList={DynamicSectionArr[0]} />

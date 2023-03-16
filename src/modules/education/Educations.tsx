@@ -285,19 +285,55 @@ function EducationPage() {
     setMore(!more);
   };
   return (
-    <Layout>
-      <div className={styles.container}>
-        <Input
-          dropdown={dropdown}
-          placeholder={"Kasb, fan yoki o’quv markaz nomini kiriting..."}
-        />
-        <Breadcrumb />
+    <div className={styles.container}>
+      <Input
+        dropdown={dropdown}
+        placeholder={"Kasb, fan yoki o’quv markaz nomini kiriting..."}
+      />
+      <Input
+        dropdown={[
+          {
+            options: [
+              "Barchasi",
+              "Toshkent",
+              "Samarqand",
+              "Buxoro",
+              "Sirdaryo",
+              "Jizzax",
+              "Qashqadaryo",
+              "Andijon",
+              "Namangan",
+              "Farg’ona",
+              "Surxondaryo",
+              "Xorazm",
+              "Navoiy",
+              "Qoraqalpog’iston Respublikasi",
+            ],
+            name: "Mintaqa",
+          },
+        ]}
+        placeholder={"Kasb, fan yoki o’quv markaz nomini kiriting..."}
+        button={"Izlash"}
+      />
+      <Breadcrumb />
 
-        <DynamicList sectionList={DynamicSectionArr[0]} />
+      <DynamicList sectionList={DynamicSectionArr[0]} />
 
-        <div className={styles.cards}>
-          {Cards.map((item, i) => {
-            if (more) {
+      <div className={styles.cards}>
+        {Cards.map((item, i) => {
+          if (more) {
+            return (
+              <Card
+                key={i}
+                title={item.title}
+                description={item.description}
+                score={item.score}
+                imgUrl={item.imgUrl}
+                href={`/educations/${i}`}
+              />
+            );
+          } else {
+            if (i < 9) {
               return (
                 <Card
                   key={i}
@@ -308,45 +344,32 @@ function EducationPage() {
                   href={`/educations/${i}`}
                 />
               );
-            } else {
-              if (i < 9) {
-                return (
-                  <Card
-                    key={i}
-                    title={item.title}
-                    description={item.description}
-                    score={item.score}
-                    imgUrl={item.imgUrl}
-                    href={`/educations/${i}`}
-                  />
-                );
-              }
             }
-          })}
-        </div>
-
-        <div className={styles.buttonDiv}>
-          <Button
-            label={
-              more ? (
-                <span>
-                  Kamroq <UpOutlined />
-                </span>
-              ) : (
-                <>
-                  <span>
-                    Ko&apos;proq <DownOutlined />
-                  </span>
-                </>
-              )
-            }
-            border="full"
-            type="primary"
-            onClick={onClick}
-          />
-        </div>
+          }
+        })}
       </div>
-    </Layout>
+
+      <div className={styles.buttonDiv}>
+        <Button
+          label={
+            more ? (
+              <span>
+                Kamroq <UpOutlined />
+              </span>
+            ) : (
+              <>
+                <span>
+                  Ko&apos;proq <DownOutlined />
+                </span>
+              </>
+            )
+          }
+          border="full"
+          type="primary"
+          onClick={onClick}
+        />
+      </div>
+    </div>
   );
 }
 

@@ -39,7 +39,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, dropName }) => {
 
   return (
     <div
-      className={styles.dropdown}
+      className={`${styles.dropdown} ${styles.Res}`}
       onMouseEnter={toggleDropdown}
       onMouseLeave={toggleDropdown}
     >

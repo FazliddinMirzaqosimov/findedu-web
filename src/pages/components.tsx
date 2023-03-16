@@ -90,7 +90,7 @@ const branch2 = {
 const Components = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <Breadcrumb paths={[{ title: "O'quv Markazlari", link: "/" }]} /> */}
       <Space direction={"vertical"} size={[10, 150]}>
         <Tag text={"tag"} color={"blue"} />
@@ -271,7 +271,7 @@ const Components = () => {
           }
         />
       </Space>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

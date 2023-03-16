@@ -12,7 +12,7 @@ import yt from './yt.svg'
 function Footer() {
   return (
     <footer className={css.footer}>
-        <div className={css.container}>
+        <div className={`container ${css.container}`}>
             <Link href='#'>
                 <Image src={logo} alt='Footer-logo'/>
             </Link>

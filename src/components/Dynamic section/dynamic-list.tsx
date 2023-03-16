@@ -10,9 +10,9 @@ interface List {
 const DynamicList = ({sectionList}: List) => {
     return (
         <>
-            <Space size={20}>
+            <div className={style.section_list}>
                 <p className={style.title}>{sectionList.title} :</p>
-                <Space align={"center"} size={20} wrap={true}>
+                <Space align={"center"} size={[20,10]} className={style.tag_list}>
                     {
                             sectionList.tags.map((tag, ind) => (
                                 <Tag color={'blue'} text={tag.text}  key={ind}/>
@@ -20,7 +20,7 @@ const DynamicList = ({sectionList}: List) => {
                     }
                 </Space>
 
-            </Space>
+            </div>
         </>
     )
 }

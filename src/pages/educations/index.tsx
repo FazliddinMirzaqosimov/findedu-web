@@ -1,7 +1,8 @@
+import EducationPage from "@/modules/education/Educations";
 import React from "react";
 
-function Edus() {
-  return <div>Edus</div>;
-}
+const Education = () => {
+  return <EducationPage />;
+};
 
-export default Edus;
+export default Education;

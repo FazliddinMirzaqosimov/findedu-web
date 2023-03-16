@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./style.module.scss";
 import { ArrowRightOutlined } from "@ant-design/icons";
-
-interface DropdownProps {
-  options: string[];
-  dropName: string;
-}
+import { DropdownProps } from "@/interface";
+import { setInputFilter } from "@/service/redux/Input";
+import { useAppDispatch, useAppSelector } from "@/service/redux/hooks";
 
 const Dropdown: React.FC<DropdownProps> = ({ options, dropName }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
+  const dispatch = useAppDispatch();
+  const { filterState } = useAppSelector((state) => state.filter);
 
   const toggleDropdown = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
@@ -27,13 +28,28 @@ const Dropdown: React.FC<DropdownProps> = ({ options, dropName }) => {
     }
   };
 
+  useEffect(() => {
+    setSelectedOptions([...filterState.filter]);
+  }, [isOpen]);
+
+  useEffect(() => {
+    dispatch(setInputFilter({ ...filterState, filter: selectedOptions }));
+    console.log(filterState);
+  }, [selectedOptions.length]);
+
   return (
     <div
       className={styles.dropdown}
       onMouseEnter={toggleDropdown}
       onMouseLeave={toggleDropdown}
     >
-      <button className={styles.dropdown__button}>
+      <button
+        className={styles.dropdown__button}
+        style={{
+          borderLeft: isOpen ? "1px solid #461773" : "1px solid #0A0311",
+          color: isOpen ? "#461773" : "#0A0311",
+        }}
+      >
         {dropName} &nbsp;{" "}
         <ArrowRightOutlined
           rotate={isOpen ? 90 : 0}

@@ -17,7 +17,10 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Sponsor from "@/components/Sponsor";
 import DynamicList from "@/components/Dynamic section/dynamic-list";
-import { ImagesData, ImagesData2 } from "@/components/ImageViewer/imagesData/imagesdata";
+import {
+  ImagesData,
+  ImagesData2,
+} from "@/components/ImageViewer/imagesData/imagesdata";
 import { CoursesData } from "@/components/courses/coursesData/coursesData";
 
 const DynamicSectionArr = [
@@ -230,9 +233,13 @@ const Components = () => {
             { count: 345, label: "Ro’yhatdan o’tkan o’quv markazlar" },
           ]}
         />
-        <ImageViewer data={ImagesData2}/>
-		<ImageViewer data={ImagesData} />
-		<ImageViewer width={1300} height={600} src='https://c4.wallpaperflare.com/wallpaper/500/442/354/outrun-vaporwave-hd-wallpaper-thumb.jpg' />
+        <ImageViewer data={ImagesData2} />
+        <ImageViewer data={ImagesData} />
+        <ImageViewer
+          width={1300}
+          height={600}
+          src="https://c4.wallpaperflare.com/wallpaper/500/442/354/outrun-vaporwave-hd-wallpaper-thumb.jpg"
+        />
         <Courses data={CoursesData} />
         <Carusel length={3} />
         <div>
@@ -252,29 +259,11 @@ const Components = () => {
           />
         </div>
         <Card
-          cardOptions={[
-            {
-              title: "Najot ta'lim",
-              description: "Biz ilm va tajriba ulashamiz",
-              score: 4.5,
-              imgUrl: { img1 },
-              href: "string",
-            },
-            {
-              title: "PDP It Company",
-              description: "Biz ilm va tajriba ulashamiz",
-              score: 3.5,
-              imgUrl: { img2 },
-              href: "string",
-            },
-            {
-              title: "Data learning center",
-              description: "Biz ilm va tajriba ulashamiz",
-              score: 5.5,
-              imgUrl: { img3 },
-              href: "string",
-            },
-          ]}
+          title="Najot ta'lim"
+          description="Biz ilm va tajriba ulashamiz"
+          score={4.5}
+          imgUrl={img1}
+          href="/string"
         />
         <Sponsor
           src={

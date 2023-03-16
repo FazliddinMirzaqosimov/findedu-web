@@ -1,16 +1,28 @@
 import React from "react";
 import Image from "next/image";
 import { StarFilled } from "@ant-design/icons";
+import { Form, Input, Rate } from "antd";
 
 import Breadcrumb from "@/components/Breadcrumb";
 import Heading from "@/components/heading/Heading";
 import Layout from "@/components/Layout";
 import DynamicList from "@/components/Dynamic section/dynamic-list";
 import styles from "./style.module.scss";
-import NTLogo from "@/assets/media/NT_logo.png";
 import Branch from "@/components/Branch";
 import Courses from "@/components/courses/Courses";
 import ImageViewer from "@/components/ImageViewer/ImageViewer";
+import Corusel from "@/components/carusel/carusel";
+import Button from "@/components/Button";
+import NTLogo from "@/assets/media/NT_logo.png";
+import Card from "@/components/card";
+
+const onFinish = (values: any) => {
+  console.log("Success:", values);
+};
+
+const onFinishFailed = (errorInfo: any) => {
+  console.log("Failed:", errorInfo);
+};
 
 const staticData = {
   eduName: "Najot Ta'lim",
@@ -121,6 +133,29 @@ const staticData = {
       src: "https://picsum.photos/400/400?random=6",
     },
   ],
+  recommendations: [
+    {
+      title: "Najot ta'lim",
+      description: "Biz ilm va tajriba ulashamiz",
+      score: 4.5,
+      imgUrl: NTLogo,
+      id: "/string1",
+    },
+    {
+      title: "Najot ta'lim",
+      description: "Biz ilm va tajriba ulashamiz",
+      score: 4.5,
+      imgUrl: NTLogo,
+      id: "/string1",
+    },
+    {
+      title: "Najot ta'lim",
+      description: "Biz ilm va tajriba ulashamiz",
+      score: 4.5,
+      imgUrl: NTLogo,
+      id: "/string1",
+    },
+  ],
 };
 
 function Edu() {
@@ -198,11 +233,62 @@ function Edu() {
             <span className={styles.icon}>
               <StarFilled />
             </span>
-            O’quv markaz umumiy bahosi: <span>4,7</span>
+            O’quv markaz umumiy bahosi:{" "}
+            <span className={styles.highlight}>4,7</span>
           </div>
+          <span className={styles.dotIcon}></span>
           <div className={styles.subtitleItem}>
-            Izohlar va boholar soni: <span>432</span>
+            Izohlar va boholar soni:{" "}
+            <span className={styles.highlight}>432</span>
           </div>
+        </div>
+        <Corusel length={3} />
+        <Form
+          name="basic"
+          // labelCol={{ span: 8 }}
+          // wrapperCol={{ span: 16 }}
+          className={styles.form}
+          // initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <div className={styles.textarea}>
+            <Form.Item
+              name="comment"
+              rules={[
+                { required: true, message: "Please input your comment!" },
+              ]}
+            >
+              <Input.TextArea
+                rows={4}
+                placeholder="Izoh qoldirishingiz mumkin..."
+              ></Input.TextArea>
+            </Form.Item>{" "}
+          </div>
+          <Form.Item
+            label="O’quv markazga baho bering:"
+            name="rate"
+            rules={[{ required: true, message: "Please input your Rate!" }]}
+          >
+            <Rate allowHalf defaultValue={2.5} />
+          </Form.Item>
+          <Button label="izohni yuborish" type="primary" border="full" />
+        </Form>
+      </section>
+      <section className={styles.recommendation}>
+        <Heading title="Recommendation" titleSize="md" highlightedWord />
+        <div className={styles.recommendCards}>
+          {staticData.recommendations.map((item) => (
+            <Card
+              key={item.id}
+              title={item.title}
+              description={item.description}
+              score={item.score}
+              imgUrl={item.imgUrl}
+              href={item.id}
+            />
+          ))}
         </div>
       </section>
     </Layout>

@@ -37,3 +37,25 @@ export interface DropdownProps {
   options: string[];
   dropName: string;
 }
+
+//education interfase
+
+export interface EducationI{
+  subjects: []
+  programs: []
+  others: []
+  phones: []
+  links: []
+  branches: []
+  _id: string,
+  name_uz: string,
+  name_ru: string,
+  name_en: string,
+  languages: []
+}
+
+export interface EducationRes{
+  total:number
+  data:EducationI[]
+}
+

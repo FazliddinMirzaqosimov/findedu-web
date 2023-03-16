@@ -17,7 +17,6 @@ interface ImageProps {
   height?: number;
 }
 
-
 ////////////////////////////////////////////////////////////////////////
 
 // 1ta rasm bolsa - src degan props, width height - required
@@ -26,19 +25,58 @@ interface ImageProps {
 
 ////////////////////////////////////////////////////////////////////////
 
-
 const ImageViewer: FC<ImageProps> = ({ data, width, height, src }) => {
   return (
     <div className={s.img}>
       <Image.PreviewGroup>
         {data ? (
           <Swiper
-            slidesPerView={data.length <= 4 ? data.length : 3}
+            slidesPerView={"auto"}
             grid={{
               rows: data.length <= 4 ? 1 : 2,
             }}
-            autoplay={true}
+
+            breakpoints={{
+              1920: {
+                width: 1400,
+                // slidesPerView: data.length <= 4 ? data.length : 3,
+                slidesPerView: 2,
+              },
+              1600: {
+                width: 1400,
+                slidesPerView: 3,
+              },
+              1200: {
+                width: 1100,
+                slidesPerView: 3,
+              },
+              1024: {
+                width: 944,
+                slidesPerView: 2,
+              },
+              768: {
+                width: 708,
+                slidesPerView: 2,
+              },
+              576:{
+                width: 536,
+                slidesPerView: 1,
+              },
+              480: {
+                width: 460,
+                slidesPerView: 1,
+              },
+              350:{
+                width: 350,
+                slidesPerView: 1,
+              },
+              280: {
+                width: 280,
+                slidesPerView: 1
+              }
+            }}
             spaceBetween={30}
+            autoplay={false}
             pagination={{
               clickable: true,
             }}
@@ -58,38 +96,61 @@ const ImageViewer: FC<ImageProps> = ({ data, width, height, src }) => {
             }}
           >
             {data?.map((e) => (
-              <SwiperSlide className={s.swiperSlide} key={e.id}>
-                <div className={s.d}>
-                  <Image
-                    width={
-                      data.length == 4
-                        ? 300
-                        : data.length == 2
-                        ? 600
-                        : data.length == 1
-                        ? 1200
-                        : 380
-                    }
-                    height={
-                      data.length == 4
-                        ? 200
-                        : data.length == 2
-                        ? 400
-                        : data.length == 1
-                        ? 650
-                        : 282
-                    }
-                    src={e?.src}
-                    preview={{
-                      mask: (
-                        <Space direction="horizontal" align="center">
-                          <EyeOutlined />
-                          Preview
-                        </Space>
-                      ),
-                    }}
-                  />
-                </div>
+              <SwiperSlide
+                className={s.swiperSlide}
+                key={e.id}
+                style={{
+                  height:
+                    data.length == 1
+                      ? 650
+                      : data.length == 2
+                      ? 400
+                      : data.length == 3
+                      ? 282
+                      : data.length == 4
+                      ? 200
+                      : 225,
+                  width:
+                    data.length == 4
+                      ? 300
+                      : data.length == 2
+                      ? 600
+                      : data.length == 1
+                      ? 1200
+                      : 350,
+                }}
+              >
+                <Image
+                  width={
+                    data.length == 4
+                      ? 300
+                      : data.length == 2
+                      ? 600
+                      : data.length == 1
+                      ? 1200
+                      : 350
+                  }
+                  height={
+                    data.length == 1
+                      ? 650
+                      : data.length == 2
+                      ? 400
+                      : data.length == 3
+                      ? 282
+                      : data.length == 4
+                      ? 200
+                      : 225
+                  }
+                  src={e?.src}
+                  preview={{
+                    mask: (
+                      <Space direction="horizontal" align="center">
+                        <EyeOutlined />
+                        Preview
+                      </Space>
+                    ),
+                  }}
+                />
               </SwiperSlide>
             ))}
           </Swiper>

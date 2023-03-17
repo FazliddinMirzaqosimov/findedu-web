@@ -187,13 +187,25 @@
             nav{
                 display: grid;
                 grid-template-columns: 1fr;
-                row-gap: 50px;
+                gap: 10px;
+
+                .mainLinks {
+                    gap: 10px;
+
+                    li {
+                        a {
+                            font-size: 18px;
+                            line-height: 140%;
+                        }
+                    }
+                }
 
                 .right {
                     grid-column: 1/2;
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     gap: 0;
+                    margin-top: 10px;
                 }
             }
 

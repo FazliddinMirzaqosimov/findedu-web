@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: var(--white);
+  background-color: rgba(255, 255, 255, 0.85);
   z-index: 100;
 
   .wrapper {
@@ -101,14 +101,9 @@
   }
 }
 
-.blur {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(5px);
-  
-  .wrapper {
-    transition: .4s;
-    padding: 20px 0;
-  }
+.padding {
+  transition: .4s !important;
+  padding: 20px 0 !important;
 }
 
 @media (max-width: 968px) {

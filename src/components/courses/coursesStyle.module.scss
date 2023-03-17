@@ -1,7 +1,8 @@
 .cards {
   display: flex;
-  gap: 30px;
   flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
 }
 .link {
   color: inherit;
@@ -17,7 +18,7 @@
   font-family: "Inter";
   font-weight: 400;
   font-size: 16px;
-  width: 380px;
+  width: 30%;
   position: relative;
   min-height: 100%;
   &__heading {
@@ -41,3 +42,29 @@
     color: darkslateblue;
   }
 }
+
+@media (max-width: 1290px) {
+  .card {
+    width: 35%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1030px) {
+  .card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 780px) {
+  .card {
+    width: 380px;
+  }
+}
+
+@media (max-width: 515px) {
+  .card {
+    width: 95%;
+  }
+}
+

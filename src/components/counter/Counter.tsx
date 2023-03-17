@@ -33,7 +33,7 @@ const Counter: React.FC<{ options: Option[] }> = ({ options }) => {
       {options.map((item, i) => (
         <div key={i} className={styles.countWrap}>
           <h3 className={styles.count}>
-            <CountUp start={0} end={item.count} duration={500} />
+            <CountUp start={0} end={item.count} duration={1} />
           </h3>
           <span className={styles.label}>{item.label}</span>
         </div>

@@ -1,9 +1,12 @@
 import Head from "next/head";
 import SinovJoyi from "@/SinovJoyi";
+import {useGetEducation} from "@/hooks/EducationQuery";
 
 
 export default function Home() {
-
+    const {data,error,isLoading}=useGetEducation()
+    console.log(isLoading)
+    console.log(data)
     return (
         <>
 

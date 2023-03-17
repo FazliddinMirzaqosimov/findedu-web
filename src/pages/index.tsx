@@ -1,10 +1,11 @@
 import Head from "next/head";
 import SinovJoyi from "@/SinovJoyi";
 import {useGetEducation} from "@/hooks/EducationQuery";
+import {useGetByEduCentreReview, useGetByIdReview, useGetReview} from "@/hooks/ReviewQuery";
 
 
 export default function Home() {
-    const {data,error,isLoading}=useGetEducation()
+    const {data,error,isLoading}=useGetByEduCentreReview('63fd0ac101554397ebb75a51')
     console.log(isLoading)
     console.log(data)
     return (

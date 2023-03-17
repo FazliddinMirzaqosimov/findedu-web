@@ -33,7 +33,7 @@ function Navbar() {
     <header className={`${css.navbar}`}>
         <div className="container">
             <div className={`${css.wrapper} ${blur > 300 && css.padding}`}>
-              <Link href='#'>
+              <Link href='/'>
                   <Image className={css.logo} src={logo} alt='Logo' />
               </Link>
               <input type="checkbox" id="checkbox" />
@@ -47,7 +47,7 @@ function Navbar() {
 
               <nav>
                   <ul>
-                      <li><Link href={'#'}>O’quv markazlar</Link></li>
+                      <li><Link href={'/educations'}>O’quv markazlar</Link></li>
                       <li><Link href={'#'}>Loyiha haqida</Link></li>
                   </ul>
                   <Button label='Kirish' type='primary' border='full' />

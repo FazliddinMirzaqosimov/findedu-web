@@ -1,4 +1,4 @@
-import {useQuery} from "react-query";
+import {useMutation, useQuery} from "react-query";
 import {ReviewByIdRes, ReviewRes} from "@/interface";
 import ReqLib from "@/lib/api";
 
@@ -13,3 +13,7 @@ export const useGetByIdReview=(id:string)=>{
 export const useGetByEduCentreReview=(id:string)=>{
     return useQuery<ReviewByIdRes>(['get-by-edu-review',id],()=>ReqLib.getByIdRes<ReviewByIdRes>('review/educentre',id))
 }
+
+// export const usePostReview=()=>{
+//     return useMutation(ReqLib.postRes)
+// }

@@ -144,3 +144,9 @@ export interface ReviewRes{
   total:number
   data:ReviewI[]
 }
+
+export interface PostReviewI{
+  user: string
+  rating: number
+  reviewText: string
+}

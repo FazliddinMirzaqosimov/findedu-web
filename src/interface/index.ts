@@ -56,6 +56,11 @@ export interface LanguageI{
   name_en: string
   __v: number
 }
+
+export interface LanguageRes{
+  total:number
+  data:LanguageI[]
+}
 export interface SubjectsI{
   _id: string
   name_uz: string
@@ -67,12 +72,21 @@ export interface SubjectsI{
   }
 }
 
+export interface SubjectsRes{
+  total:number
+  data:SubjectsI[]
+}
 export interface ProgramsI{
   _id: string
   name_uz: string
   name_ru: string
   name_en: string
   image: string
+}
+
+export interface ProgramsRes{
+  total:number
+  data:ProgramsI[]
 }
 export interface LinkI{
   name:string

@@ -4,6 +4,7 @@
   color: grey;
   align-items: center;
   list-style: none;
+  flex-wrap: wrap;
   li {
     transition: 300ms;
     padding: 2px 3px;

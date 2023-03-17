@@ -11,7 +11,7 @@ import Courses from "@/components/courses/Courses";
 import ImageViewer from "@/components/ImageViewer/ImageViewer";
 import Corusel from "@/components/carusel/carusel";
 import Button from "@/components/Button";
-import NTLogo from "@/assets/media/NT_logo.png";
+import NTLogo from "@/assets/media/nt_logo.png";
 import Card from "@/components/card";
 
 const onFinish = (values: any) => {

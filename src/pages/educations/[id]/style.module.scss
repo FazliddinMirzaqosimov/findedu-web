@@ -66,6 +66,7 @@
   display: flex;
   align-items: center;
   gap: 4rem;
+  flex-wrap: wrap;
 }
 
 .subtitleItem {
@@ -109,10 +110,19 @@
 }
 
 .recommendCards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
+.recommendCardWrapper {
+  width: 32%;
+  margin: auto;
+}
+
+.titleBox {
+  margin-bottom: 3rem;
 }
 
 @media (max-width: 1250px) {
@@ -125,6 +135,13 @@
     width: 1000px;
   }
 }
+
+@media (max-width: 1100px) {
+  .recommendCardWrapper {
+    width: 45%;
+  }
+}
+
 @media (max-width: 1020px) {
   .container {
     width: 900px;
@@ -141,8 +158,28 @@
     align-items: center;
     text-align: center;
   }
+}
 
-  .recommendCards {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 780px) {
+  .recommendCardWrapper {
+    width: 70%;
+  }
+
+  .subtitleWrap {
+    gap: 2rem;
+  }
+
+  .dotIcon {
+    display: none;
+  }
+
+  .icon {
+    display: none;
+  }
+}
+
+@media (max-width: 462px) {
+  .recommendCardWrapper {
+    width: 100%;
   }
 }

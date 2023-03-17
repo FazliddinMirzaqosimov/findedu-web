@@ -95,7 +95,7 @@
 }
 
 .Input {
-  min-width: 300px;
+  min-width: 400px;
   height: 100%;
   border: none;
   outline: none;
@@ -111,9 +111,274 @@
     color: #0a031197;
   }
 }
+.mainDivRes {
+  display: none;
+  width: 100%;
+  margin: 0 auto;
+  // height: 45px;
+  // position: relative;
+  // align-items: center;
+  // justify-content: space-between;
+  gap: 20px;
 
+  // padding: 0px 0px 0px 20px;
+  // background: #ffffff;
+  // border: 1px solid var(--primary);
+  // border-radius: 30px;
+}
+.mainDivResBut {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  height: 45px;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 0px 0px 0px 20px;
+  background: #ffffff;
+  border: 1px solid var(--primary);
+  border-radius: 30px;
+  .buttonDiv {
+    height: 100%;
+  }
+}
 .div2nd {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+@media (max-width: 1408px) {
+  .Input {
+    min-width: 400px;
+  }
+}
+@media (max-width: 1308px) {
+  .Input {
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .dropdown {
+    &__overlay {
+      padding: 40px 80px 40px 25px;
+    }
+    &__button {
+      line-height: 110%;
+    }
+  }
+  .Input {
+    min-width: 300px;
+  }
+  .mainDivResBut {
+  }
+  .Button {
+    width: 300px;
+  }
+}
+
+@media (max-width: 970px) {
+  .mainDiv {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding-top: 10px;
+    gap: 10px;
+    .Input {
+      width: 100%;
+      padding-bottom: 10px;
+      text-align: center;
+      border-bottom: 1px solid var(--primary);
+    }
+    .dropdown {
+      &:first-child {
+        .dropdown__button {
+          border-left: none !important;
+        }
+      }
+      &__overlay {
+        padding: 40px 25px 40px 25px;
+      }
+      &__button {
+        padding-left: 15px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        line-height: 120%;
+      }
+    }
+    .div2nd {
+      gap: 15px;
+    }
+    .mainDivResBut {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 920px) {
+  .Button {
+    width: 150px;
+  }
+  .mainDivResBut {
+    .Input {
+      min-width: 250px !important;
+      &::placeholder {
+        font-size: 12px;
+        letter-spacing: 0em;
+      }
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .mainDivResBut {
+    display: none;
+  }
+  .mainDiv {
+    display: none;
+  }
+  .mainDivRes {
+    display: flex;
+    flex-direction: column;
+    .div2nd {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .Input {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #461773;
+      border-radius: 30px;
+      padding: 14px 25px;
+      text-align: center;
+      margin-bottom: 12px;
+      &::placeholder {
+        font-size: 16px;
+      }
+    }
+    .Button {
+      width: 100%;
+      border-radius: 30px;
+    }
+    .Res {
+    }
+  }
+
+  .dropdown {
+    border: 1px solid #461773;
+    border-radius: 30px;
+    position: relative;
+    &__overlay {
+      flex-direction: column;
+      padding: 20px;
+      gap: 15px;
+    }
+    &__option {
+      text-align: center;
+      width: 100%;
+      line-height: 140%;
+    }
+    &__button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      border: none !important;
+
+      padding: 10px 25px;
+    }
+  }
+}
+
+@media (max-width: 490px) {
+  .mainDivRes {
+    .div2nd {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 10px;
+    }
+    .Input {
+    }
+    .Button {
+    }
+  }
+  .Button {
+    padding: 17px;
+    order: 1;
+  }
+  .dropdown {
+    order: 2;
+    width: 100% !important;
+    &__overlay {
+      flex-direction: row !important;
+    }
+    &__option {
+      width: auto;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .mainDivRes {
+    .div2nd {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 10px;
+    }
+    .Input {
+      min-width: 100% !important;
+      &::placeholder {
+        font-size: 13px;
+      }
+    }
+    .Button {
+    }
+  }
+  .Button {
+    padding: 17px;
+    order: 1;
+  }
+  .dropdown {
+    order: 2;
+    width: 100% !important;
+    &__overlay {
+      flex-direction: row !important;
+    }
+    &__option {
+      width: auto;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .mainDivRes {
+    .Input {
+      text-align: left;
+      padding: 12px 15px;
+      margin-bottom: 5px;
+      &::placeholder {
+        text-align: center;
+        font-size: 11px;
+      }
+    }
+    .Button {
+      padding: 14px 15px;
+      font-size: 14px;
+    }
+    .dropdown {
+      padding: 0;
+      &__overlay {
+        gap: 15px;
+      }
+      &__option {
+        padding: 5px 10px;
+        font-size: 13px;
+      }
+      &__button {
+        padding: 14px 20px;
+        font-size: 14px;
+      }
+    }
+  }
 }

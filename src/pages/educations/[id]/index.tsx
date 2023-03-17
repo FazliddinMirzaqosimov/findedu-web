@@ -3,9 +3,7 @@ import Image from "next/image";
 import { StarFilled } from "@ant-design/icons";
 import { Form, Input, Rate } from "antd";
 
-import Breadcrumb from "@/components/Breadcrumb";
 import Heading from "@/components/heading/Heading";
-import Layout from "@/components/Layout";
 import DynamicList from "@/components/Dynamic section/dynamic-list";
 import styles from "./style.module.scss";
 import Branch from "@/components/Branch";
@@ -160,7 +158,7 @@ const staticData = {
 
 function Edu() {
   return (
-    <Layout>
+    <>
       <section className={styles.heroSection}>
         <div>
           <Heading
@@ -215,30 +213,35 @@ function Edu() {
         </div>
       </section>
       <section className={styles.gallaries}>
-        <Heading
-          title="Foto lavhalar"
-          titleSize="md"
-          highlightedWord="lavhalar"
-        />
+        <div className={styles.titleBox}>
+          <Heading
+            title="Foto lavhalar"
+            titleSize="md"
+            highlightedWord="lavhalar"
+          />
+        </div>
         <ImageViewer data={staticData.gallaries} />
       </section>
       <section className={styles.comments}>
-        <Heading
-          title="O’quvchilar tomonidan izohlar"
-          titleSize="md"
-          highlightedWord="izohlar"
-        />
+        <div className={styles.titleBox}>
+          <Heading
+            title="O’quvchilar tomonidan izohlar"
+            titleSize="md"
+            highlightedWord="izohlar"
+          />
+        </div>
+
         <div className={styles.subtitleWrap}>
           <div className={styles.subtitleItem}>
             <span className={styles.icon}>
               <StarFilled />
             </span>
-            O’quv markaz umumiy bahosi:{" "}
+            O’quv markaz umumiy bahosi:
             <span className={styles.highlight}>4,7</span>
           </div>
           <span className={styles.dotIcon}></span>
           <div className={styles.subtitleItem}>
-            Izohlar va boholar soni:{" "}
+            Izohlar va boholar soni:
             <span className={styles.highlight}>432</span>
           </div>
         </div>
@@ -277,21 +280,24 @@ function Edu() {
         </Form>
       </section>
       <section className={styles.recommendation}>
-        <Heading title="Recommendation" titleSize="md" highlightedWord />
+        <div className={styles.titleBox}>
+          <Heading title="Recommendation" titleSize="md" highlightedWord />
+        </div>
         <div className={styles.recommendCards}>
           {staticData.recommendations.map((item) => (
-            <Card
-              key={item.id}
-              title={item.title}
-              description={item.description}
-              score={item.score}
-              imgUrl={item.imgUrl}
-              href={item.id}
-            />
+            <div key={item.id} className={styles.recommendCardWrapper}>
+              <Card
+                title={item.title}
+                description={item.description}
+                score={item.score}
+                imgUrl={item.imgUrl}
+                href={item.id}
+              />
+            </div>
           ))}
         </div>
       </section>
-    </Layout>
+    </>
   );
 }
 

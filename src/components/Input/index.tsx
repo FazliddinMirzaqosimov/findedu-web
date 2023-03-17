@@ -18,40 +18,118 @@ const Index: React.FC<InputMainProps> = ({ dropdown, button, placeholder }) => {
   }, [input]);
 
   return (
-    <div
-      className={styles.mainDiv}
-      style={{
-        paddingRight: button ? 0 : "20px",
-      }}
-    >
-      <input
-        placeholder={placeholder}
-        type="text"
-        value={input}
-        className={styles.Input}
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
-      />
+    <>
+      {!button && (
+        <div
+          className={styles.mainDiv}
+          style={{
+            paddingRight: button ? 0 : "20px",
+          }}
+        >
+          <input
+            placeholder={placeholder}
+            type="text"
+            value={input}
+            className={styles.Input}
+            onChange={(e) => {
+              setInput(e.target.value);
+            }}
+          />
+          <div
+            style={{
+              height: "100%",
+            }}
+            className={styles.div2nd}
+          >
+            {dropdown?.map((drop, i) => {
+              return (
+                <DropDown
+                  key={`${i}`}
+                  options={drop.options}
+                  dropName={drop.name}
+                />
+              );
+            })}
+            {/* {button && <button className={styles.Button}>{button}</button>} */}
+          </div>
+        </div>
+      )}
       <div
-        style={{
-          height: "100%",
-        }}
-        className={styles.div2nd}
+        className={styles.mainDivRes}
+        // style={{
+        // paddingRight: button ? 0 : "20px",
+        // }}
       >
-        {dropdown?.map((drop, i) => {
-          return (
-            <DropDown
-              key={`${i}`}
-              options={drop.options}
-              dropName={drop.name}
-            />
-          );
-        })}
-
-        {button && <button className={styles.Button}>{button}</button>}
+        {/* <div className={styles.buttonInput}> */}
+        <input
+          placeholder={placeholder}
+          type="text"
+          value={input}
+          className={`${styles.Input} ${styles.Res}`}
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
+          style={{
+            width: button ? "100%" : "",
+          }}
+        />
+        {/* </div> */}
+        <div
+          style={{
+            height: "100%",
+          }}
+          className={styles.div2nd}
+        >
+          {dropdown?.map((drop, i) => {
+            return (
+              <DropDown
+                key={`${i}`}
+                options={drop.options}
+                dropName={drop.name}
+              />
+            );
+          })}
+          {button && <button className={styles.Button}>{button}</button>}
+        </div>
       </div>
-    </div>
+      {button && (
+        <div
+          className={styles.mainDivResBut}
+          style={{
+            paddingRight: button ? 0 : "20px",
+          }}
+        >
+          <div className={styles.buttonDiv}>
+            <input
+              placeholder={placeholder}
+              type="text"
+              value={input}
+              className={styles.Input}
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+            />
+          </div>
+          <div
+            style={{
+              height: "100%",
+            }}
+            className={styles.div2nd}
+          >
+            {dropdown?.map((drop, i) => {
+              return (
+                <DropDown
+                  key={`${i}`}
+                  options={drop.options}
+                  dropName={drop.name}
+                />
+              );
+            })}
+            <button className={styles.Button}>{button}</button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

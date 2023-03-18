@@ -10,7 +10,6 @@ const DynamicSection = ({section}:DynamicSectionI) => {
                 {
                     section.map((section,ind)=>(
                         <DynamicList sectionList={section} key={ind}/>
-
                     ))
                 }
             </Space>

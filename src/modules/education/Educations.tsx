@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import Input from "@/components/Input";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -8,6 +8,7 @@ import Card from "@/components/card";
 import img1 from "@/assets/media/Najot_Talim-01.png";
 import Button from "@/components/Button";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
+import { useGetEducation } from "@/hooks/EducationQuery";
 const DynamicSectionArr = [
   {
     title: "Tanlashingiz mumkin",
@@ -281,6 +282,9 @@ const dropdown = [
 
 function EducationPage() {
   const [more, setMore] = useState<boolean>(false);
+
+  const { data } = useGetEducation();
+
   const onClick = () => {
     setMore(!more);
   };
@@ -296,28 +300,28 @@ function EducationPage() {
       <DynamicList sectionList={DynamicSectionArr[0]} />
 
       <div className={styles.cards}>
-        {Cards.map((item, i) => {
+        {data?.data.map((item, i) => {
           if (more) {
             return (
               <Card
-                key={i}
-                title={item.title}
-                description={item.description}
-                score={item.score}
-                imgUrl={item.imgUrl}
-                href={`/educations/${i}`}
+                key={item._id}
+                title={item.name_uz}
+                description={"Biz ilm va tajriba ulashamiz"}
+                score={4.7}
+                imgUrl={img1}
+                href={`/educations/${item._id}`}
               />
             );
           } else {
             if (i < 9) {
               return (
                 <Card
-                  key={i}
-                  title={item.title}
-                  description={item.description}
-                  score={item.score}
-                  imgUrl={item.imgUrl}
-                  href={`/educations/${i}`}
+                  key={item._id}
+                  title={item.name_uz}
+                  description={"Biz ilm va tajriba ulashamiz"}
+                  score={4.7}
+                  imgUrl={img1}
+                  href={`/educations/${item._id}`}
                 />
               );
             }
@@ -325,7 +329,12 @@ function EducationPage() {
         })}
       </div>
 
-      <div className={styles.buttonDiv}>
+      <div
+        className={styles.buttonDiv}
+        style={{
+          display: data?.data && data?.data.length >= 9 ? "flex" : "none",
+        }}
+      >
         <Button
           label={
             more ? (

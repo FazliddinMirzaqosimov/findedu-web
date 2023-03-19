@@ -1,6 +1,7 @@
 import {useMutation, useQuery} from "react-query";
-import {ReviewByIdRes, ReviewRes} from "@/interface";
+import {PostReviewI, ReviewByEduCentreRes, ReviewByIdRes, ReviewRes} from "@/interface";
 import ReqLib from "@/lib/api";
+import data from "@react-google-maps/api/src/components/drawing/Data";
 
 
 export const useGetReview=()=>{
@@ -11,9 +12,9 @@ export const useGetByIdReview=(id:string)=>{
 }
 
 export const useGetByEduCentreReview=(id:string)=>{
-    return useQuery<ReviewByIdRes>(['get-by-edu-review',id],()=>ReqLib.getByIdRes<ReviewByIdRes>('review/educentre',id))
+    return useQuery<ReviewByEduCentreRes>(['get-by-edu-review',id],()=>ReqLib.getByIdRes<ReviewByEduCentreRes>('review/educentre',id))
 }
 
-// export const usePostReview=()=>{
-//     return useMutation(ReqLib.postRes)
-// }
+export const usePostReview=()=>{
+    return useMutation(ReqLib.postRes)
+}

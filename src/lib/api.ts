@@ -1,5 +1,6 @@
 import axios from './axios'
 import {PostReviewI} from "@/interface";
+import {AxiosResponse} from "axios";
 
 
 const ReqLib={
@@ -12,9 +13,9 @@ const ReqLib={
        const response=await axios.get<T>(`/${url}/${id}`)
         return response.data
     },
-    async postRes(url:string,id:string,data:PostReviewI):Promise<void>{
+    async postRes(url:string,id:string,data:PostReviewI):Promise<AxiosResponse>{
            const response=await axios.post(`/${url}/${id}`,data)
-        console.log(response)
+            return response
     }
 }
 export default ReqLib

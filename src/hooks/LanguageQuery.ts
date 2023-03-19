@@ -6,5 +6,5 @@ export const useGetLanguage=()=>{
 }
 
 export const useGetByIdLanguage=(id:string)=>{
-    return useQuery(['get-by-id-language',id],()=>ReqLib.getByIdRes('language',id))
+    return useQuery(['get-by-id-language',id],()=>ReqLib.getByIdRes('languages',id))
 }

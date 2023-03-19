@@ -1,11 +1,12 @@
-import React from "react";
 import Image from "next/image";
 import { StarFilled } from "@ant-design/icons";
 import { Form, Input, Rate } from "antd";
 
+import { EducationI, LanguageI } from "@/interface";
+import styles from "./style.module.scss";
+
 import Heading from "@/components/heading/Heading";
 import DynamicList from "@/components/Dynamic section/";
-import styles from "./style.module.scss";
 import Branch from "@/components/Branch";
 import Courses from "@/components/courses/Courses";
 import ImageViewer from "@/components/ImageViewer/ImageViewer";
@@ -156,19 +157,45 @@ const staticData = {
   ],
 };
 
-function Edu() {
+function EduDetail({ data }: { data: EducationI }) {
+  console.log(data);
+  const DynamicListFormatter = (data: any) => {
+    const result = [];
+    for (const [key, value] of Object.entries(data)) {
+      const val = value as LanguageI[];
+      console.log(val);
+      const tagItems: { title: string; tags: { text: string }[] } = {
+        title: "",
+        tags: [],
+      };
+      tagItems.title = key;
+      if (!val?.length) tagItems.tags.push({ text: "Ma'lumot yo'q" });
+      val.forEach((item) => {
+        tagItems.tags.push({ text: item.name_uz });
+      });
+      result.push(tagItems);
+    }
+    return result;
+  };
+
   return (
     <main className={styles.main}>
       <section className={styles.heroSection}>
         <div>
           <Heading
-            title={staticData.eduName}
+            title={data.name_uz}
             titleSize="md"
             description={staticData.eduDescription}
             highlightedWord
           />
           <div className={styles.dynamicList}>
-            <DynamicList section={staticData.dynamicList} />
+            <DynamicList
+              section={DynamicListFormatter({
+                "Yo'nalishlar": data.programs,
+                Tillar: data.languages,
+                "Telefon Raqam": data.phones,
+              })}
+            />
           </div>
         </div>
         <div className={styles.heroImg}>
@@ -298,4 +325,4 @@ function Edu() {
   );
 }
 
-export default Edu;
+export default EduDetail;

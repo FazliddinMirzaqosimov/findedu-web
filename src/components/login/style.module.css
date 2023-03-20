@@ -1,0 +1,140 @@
+.tabs {
+  display: flex;
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.tabs h2 {
+  color: rgb(0, 0, 0, 0.5);
+  font-weight: 500;
+  font-size: 18px;
+  transition: 0.2s;
+}
+.tabs h2:hover {
+  cursor: pointer;
+  color: var(--login);
+}
+
+.button,
+.input {
+  border: 0;
+  width: 100%;
+  height: 60px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px;
+  outline: none;
+}
+
+.signup {
+  height: 100%;
+  width: 70%;
+  width: 500px;
+  padding: 200px 0px;
+  /* background: #111820; */
+}
+
+.signup > h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.form {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 400px 60px;
+  gap: 20px;
+}
+.form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.textbox {
+  position: relative;
+  width: 100%;
+}
+
+.textbox span {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  left: 0;
+  font-size: 22px;
+  pointer-events: none;
+  color: rgb(255 255 255 / 40%);
+}
+
+.textbox input {
+  border-radius: 15px;
+  padding: 0 15px 0 15px;
+  border: 2px solid rgb(0, 0, 0, 0.3);
+  color: rgb(0, 0, 0, 0.5);
+  height: 60px;
+}
+
+.form :is(input:focus, input:valid) ~ label {
+  translate: -40px -40px;
+  scale: 0.875;
+  padding: 0 5px;
+  margin-left: 10px;
+  background-color: white;
+}
+
+.form input:focus ~ label {
+  color: var(--login);
+  padding: 0 5px;
+  margin-left: 10px;
+  background-color: white;
+}
+
+.form input:focus {
+  border-color: var(--login);
+}
+
+.form :is(input:focus, input:valid) ~ span {
+  color: rgb(255 255 255 / 96%);
+}
+
+.textbox label {
+  position: absolute;
+  top: 50%;
+  left: 36px;
+  translate: 0 -50%;
+  color: rgb(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: 0.4s;
+}
+
+.form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 0px;
+  border-radius: 15px;
+  background: var(--login);
+  color: #f9f9f9;
+  border: 0;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 22px;
+  height: 100%;
+  width: 100%;
+}
+
+.signup p {
+  margin: 0 0 22px;
+  color: #778395;
+}
+
+.signup p > a {
+  color: var(--login);
+  text-decoration: none;
+}

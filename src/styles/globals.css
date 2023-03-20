@@ -20,6 +20,7 @@ body {
   --white: #ffffff;
   --black: #000000;
   --text: #0a0311;
+  --login: #4e1783;
   scroll-behavior: smooth;
 }
 
@@ -47,7 +48,6 @@ body {
     height: 400px;
   }
 }
-
 
 .container {
   width: 100%;
@@ -88,7 +88,6 @@ body {
     padding: 0 30px;
   }
 }
-
 
 @media (max-width: 576px) {
   .container {

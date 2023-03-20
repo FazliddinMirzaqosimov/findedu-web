@@ -1,10 +1,11 @@
 import Login from "@/components/login/login";
+import Auth from "@/modules/auth/auth";
 import React from "react";
 
 const register = () => {
   return (
     <div>
-      <Login type="register" />
+      <Auth type="register" />
     </div>
   );
 };

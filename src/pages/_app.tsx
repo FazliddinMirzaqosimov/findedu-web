@@ -11,7 +11,6 @@ import { useRouter } from "next/router";
 const queryClient = new QueryClient();
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  console.log(router.pathname.split("/").includes("auth"));
 
   if (router.pathname.split("/").includes("auth")) {
     return (

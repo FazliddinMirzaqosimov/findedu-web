@@ -20,127 +20,123 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
     }
   }, []);
   return type === "login" ? (
-    <div>
-      <div className={styles.signup}>
-        <div className={styles.tabs}>
-          <Link href="/auth/login">
-            <h2
-              style={{
-                color: type == "login" ? "#4e1783" : "auto",
-              }}
-            >
-              Kirish
-            </h2>
-          </Link>
-          <Link href="/auth/register">
-            <h2>Ro&apos;yhatdan o&apos;tish</h2>
-          </Link>
-        </div>
-        <form className={styles.form} autoComplete="off" autoCapitalize="off">
-          <div>
-            <div className={styles.textbox}>
-              <input
-                type="text"
-                className={styles.input}
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <label className={styles.label}>Email</label>
-              {/* <span className="material-symbols-outlined"> email </span> */}
-            </div>
-            <div className={styles.textbox}>
-              <input
-                type="password"
-                value={password}
-                required
-                className={styles.input}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <label className={styles.label}>Password</label>
-              {/* <span className="material-symbols-outlined"> key </span> */}
-            </div>
-          </div>
-
-          <button type="submit" className={styles.button}>
-            -&gt;
-          </button>
-        </form>
-        <p>
-          <a href="">Forgot Password?</a>
-        </p>
+    <div className={styles.signup}>
+      <div className={styles.tabs}>
+        <Link href="/auth/login">
+          <h2
+            style={{
+              color: type == "login" ? "#4e1783" : "auto",
+            }}
+          >
+            Kirish
+          </h2>
+        </Link>
+        <Link href="/auth/register">
+          <h2>Ro&apos;yhatdan o&apos;tish</h2>
+        </Link>
       </div>
+      <form className={styles.form} autoComplete="off" autoCapitalize="off">
+        <div>
+          <div className={styles.textbox}>
+            <input
+              type="text"
+              className={styles.input}
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label className={styles.label}>Email</label>
+            {/* <span className="material-symbols-outlined"> email </span> */}
+          </div>
+          <div className={styles.textbox}>
+            <input
+              type="password"
+              value={password}
+              required
+              className={styles.input}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <label className={styles.label}>Password</label>
+            {/* <span className="material-symbols-outlined"> key </span> */}
+          </div>
+        </div>
+
+        <button type="submit" className={styles.button}>
+          -&gt;
+        </button>
+      </form>
+      <p>
+        <a href="">Forgot Password?</a>
+      </p>
     </div>
   ) : (
-    <div>
-      <div className={styles.signup}>
-        <div className={styles.tabs}>
-          <Link href="/auth/login">
-            <h2>Kirish</h2>
-          </Link>
-          <Link href="/auth/register">
-            <h2
-              style={{
-                color: type == "register" ? "#4e1783" : "auto",
-              }}
-            >
-              Ro&apos;yhatdan o&apos;tish
-            </h2>
-          </Link>
-        </div>
-        <form className={styles.form} autoComplete="off" autoCapitalize="off">
-          <div>
-            <div className={styles.textbox}>
-              <input
-                type="text"
-                className={styles.input}
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <label className={styles.label}>Email</label>
-              {/* <span className="material-symbols-outlined"> email </span> */}
-            </div>
-            <div className={styles.textbox}>
-              <input
-                type="text"
-                className={styles.input}
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <label className={styles.label}>Name</label>
-              {/* <span className="material-symbols-outlined"> email </span> */}
-            </div>
-            <div className={styles.textbox}>
-              <input
-                type="password"
-                value={password}
-                required
-                className={styles.input}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <label className={styles.label}>Password</label>
-              {/* <span className="material-symbols-outlined"> key </span> */}
-            </div>
-            <div className={styles.textbox}>
-              <input
-                type="password"
-                value={confirmPassword}
-                required
-                className={styles.input}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-              <label className={styles.label}>Confirm Password</label>
-              {/* <span className="material-symbols-outlined"> key </span> */}
-            </div>
-          </div>
-
-          <button type="submit" className={styles.button}>
-            -&gt;
-          </button>
-        </form>
+    <div className={styles.signup}>
+      <div className={styles.tabs}>
+        <Link href="/auth/login">
+          <h2>Kirish</h2>
+        </Link>
+        <Link href="/auth/register">
+          <h2
+            style={{
+              color: type == "register" ? "#4e1783" : "auto",
+            }}
+          >
+            Ro&apos;yhatdan o&apos;tish
+          </h2>
+        </Link>
       </div>
+      <form className={styles.form} autoComplete="off" autoCapitalize="off">
+        <div>
+          <div className={styles.textbox}>
+            <input
+              type="text"
+              className={styles.input}
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label className={styles.label}>Email</label>
+            {/* <span className="material-symbols-outlined"> email </span> */}
+          </div>
+          <div className={styles.textbox}>
+            <input
+              type="text"
+              className={styles.input}
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label className={styles.label}>Name</label>
+            {/* <span className="material-symbols-outlined"> email </span> */}
+          </div>
+          <div className={styles.textbox}>
+            <input
+              type="password"
+              value={password}
+              required
+              className={styles.input}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <label className={styles.label}>Password</label>
+            {/* <span className="material-symbols-outlined"> key </span> */}
+          </div>
+          <div className={styles.textbox}>
+            <input
+              type="password"
+              value={confirmPassword}
+              required
+              className={styles.input}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <label className={styles.label}>Confirm Password</label>
+            {/* <span className="material-symbols-outlined"> key </span> */}
+          </div>
+        </div>
+
+        <button type="submit" className={styles.button}>
+          -&gt;
+        </button>
+      </form>
     </div>
   );
 };

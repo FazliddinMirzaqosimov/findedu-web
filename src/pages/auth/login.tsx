@@ -1,10 +1,11 @@
 import React from "react";
 import Login from "@/components/login/login";
+import Auth from "@/modules/auth/auth";
 
 const LoginPage = () => {
   return (
     <div>
-      <Login type="login" />
+      <Auth type="login" />
     </div>
   );
 };

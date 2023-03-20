@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   gap: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .tabs h2 {
@@ -30,28 +30,25 @@
 }
 
 .signup {
+  margin: 0 auto;
+  /* width: 100%; */
+  z-index: 999;
   height: 100%;
-  padding: 200px 0px;
+  padding: 0px 0px;
   /* background: #111820; */
-}
-
-.signup > h2 {
-  font-size: 32px;
-  font-weight: 600;
-  margin: 0 0 6px;
-  color: rgba(0, 0, 0, 0.5);
 }
 
 .form {
   margin: 0;
+  /* background-color: white; */
   display: grid;
   grid-template-columns: 400px 60px;
-  gap: 20px;
+  gap: 15px;
 }
 .form > div {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
 .textbox {
@@ -70,6 +67,7 @@
 }
 
 .textbox input {
+  background-color: white;
   border-radius: 15px;
   padding: 0 15px 0 15px;
   border: 2px solid rgb(0, 0, 0, 0.3);
@@ -127,20 +125,123 @@
   width: 100%;
 }
 
-.signup p {
-  margin: 0 0 22px;
-  color: #778395;
-}
-
 .signup p > a {
   text-align: center;
-  color: var(--login);
+  color: rgb(0, 0, 0, 0.5);
   text-decoration: none;
   font-size: 14px;
+  transition: 0.2s;
+}
+.signup p > a:hover {
+  color: var(--login);
 }
 .signup p {
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   width: 400px;
+}
+
+@media (max-width: 500px) {
+  .tabs {
+    width: 340px;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .signup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tabs h2 {
+    font-size: 14px;
+  }
+  .form {
+    grid-template-columns: 340px 55px;
+    gap: 10px;
+  }
+  .form > div {
+    gap: 10px;
+  }
+}
+@media (max-width: 420px) {
+  .signup {
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .tabs {
+    margin-bottom: 20px;
+    gap: 20px;
+    width: 100%;
+  }
+  .tabs > h2 {
+    font-size: 14px;
+  }
+  .form {
+    grid-template-columns: 270px 50px;
+  }
+  .textbox > .input {
+    height: 50px;
+  }
+  .form :is(input:focus, input:valid) ~ label {
+    translate: -40px -35px;
+    scale: 0.75;
+    margin-left: 10px;
+    background-color: white;
+  }
+  .textbox label {
+    font-size: 12px;
+    left: 20px;
+  }
+  .signup p {
+    margin-top: 10px;
+  }
+  .signup p > a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 340px) {
+  .tabs {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .tabs h2 {
+    font-size: 14px;
+  }
+
+  .form {
+    grid-template-columns: 220px 40px;
+  }
+  .textbox > .input {
+    height: 40px;
+  }
+
+  .form button {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 270px) {
+  .tabs {
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  .tabs h2 {
+    font-size: 12px;
+  }
+
+  .form {
+    grid-template-columns: 180px 35px;
+    gap: 8px;
+  }
+  .form > div {
+    gap: 8px;
+  }
+  .textbox > .input {
+    height: 35px;
+  }
 }

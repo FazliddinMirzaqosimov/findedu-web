@@ -163,5 +163,5 @@ export interface PostReviewI {
 }
 
 export interface LoginTypes {
-  type: "login" | "register";
+  type: "login" | "register" | "confirm";
 }

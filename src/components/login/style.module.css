@@ -7,6 +7,11 @@
   margin-bottom: 30px;
 }
 
+.signup .tabs .h2confirm {
+  color: var(--login) !important;
+  font-weight: 600;
+}
+
 .tabs h2 {
   color: rgb(0, 0, 0, 0.5);
   font-weight: 500;
@@ -186,7 +191,7 @@
     height: 50px;
   }
   .form :is(input:focus, input:valid) ~ label {
-    translate: -40px -35px;
+    translate: -20px -32px;
     scale: 0.75;
     margin-left: 10px;
     background-color: white;
@@ -204,6 +209,9 @@
 }
 
 @media (max-width: 340px) {
+  .form :is(input:focus, input:valid) ~ label {
+    translate: -20px -26px;
+  }
   .tabs {
     width: 100%;
     margin-bottom: 10px;

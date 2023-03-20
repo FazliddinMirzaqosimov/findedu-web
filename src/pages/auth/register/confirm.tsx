@@ -1,19 +1,21 @@
-import EducationPage from "@/modules/education/Educations";
+import Auth from "@/modules/auth/auth";
 import Head from "next/head";
 import React from "react";
 
-const Education = () => {
+const confirm = () => {
   return (
     <>
       <Head>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>O&apos;quv markazlar</title>
+        <title>Tasdiqlash</title>
       </Head>
-      <EducationPage />
+      <div>
+        <Auth type="confirm" />
+      </div>
     </>
   );
 };
 
-export default Education;
+export default confirm;

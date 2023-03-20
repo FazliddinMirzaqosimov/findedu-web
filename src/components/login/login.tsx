@@ -19,7 +19,6 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
       router.push(router.pathname);
     }
   }, []);
-  console.log(email, password);
   return type === "login" ? (
     <div>
       <div className={styles.signup}>

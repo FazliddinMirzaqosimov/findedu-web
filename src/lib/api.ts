@@ -13,9 +13,11 @@ const ReqLib={
        const response=await axios.get<T>(`/${url}/${id}`)
         return response.data
     },
-    async postRes(url:string,id:string,data:PostReviewI):Promise<AxiosResponse>{
-           const response=await axios.post(`/${url}/${id}`,data)
-            return response
+    async postRes<T>(url:string,id:string,data:PostReviewI):Promise<T>{
+        console.log({url, id, data})
+       const dataJson=JSON.stringify(data)
+           const response=await axios.post(`/${url}/${id}`,dataJson)
+            return response.data
     }
 }
 export default ReqLib

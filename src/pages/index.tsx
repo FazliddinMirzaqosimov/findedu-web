@@ -1,20 +1,28 @@
 import Head from "next/head";
-import SinovJoyi from "@/SinovJoyi";
-import { useGetEducation } from "@/hooks/EducationQuery";
+
 import {
-  useGetByEduCentreReview,
-  useGetByIdReview,
-  useGetReview,
+ usePostReview,
 } from "@/hooks/ReviewQuery";
-import { useGetByIdSubjects } from "@/hooks/SubjectsQuery";
+
 import Homepage from "@/modules/Home";
 
 export default function Home() {
-  const { data, error, isLoading } = useGetByIdSubjects(
-    "63fc7282d89c3abbac879384"
-  );
-  console.log(isLoading);
-  console.log(data);
+
+
+  const {mutate}=usePostReview()
+
+  const postReview=():void=>{
+    console.log('das')
+    const data={
+      user: "6416f1c23c9a60905124cda9",
+      rating: 4.5,
+      reviewText: 'Yaxshi o\'quv markazi'
+    }
+    // const id="63fd08430f36639ac928c68b"
+
+    mutate({id:"63fd08430f36639ac928c68b", data})
+  }
+
   return (
     <>
       <Head>
@@ -23,7 +31,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SinovJoyi />
+      <button onClick={postReview}>send preview</button>
+
       <Homepage />
     </>
   );

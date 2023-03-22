@@ -1,9 +1,9 @@
 import {useQuery} from "react-query";
 import ReqLib from "@/lib/api";
-import {ProgramsI, ProgramsRes} from "@/interface";
+import {ProgramsI, ProgramsReq} from "@/interface";
 
 export const useGetPrograms=()=>{
-    return useQuery<ProgramsRes>('get-programs',()=>ReqLib.getRes<ProgramsRes>('programs'))
+    return useQuery<ProgramsReq>('get-programs',()=>ReqLib.getRes<ProgramsReq>('programs'))
 }
 
 export const useGeByIdPrograms=(id:string)=>{

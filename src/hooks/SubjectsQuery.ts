@@ -1,9 +1,9 @@
 import {useQuery} from "react-query";
 import ReqLib from "@/lib/api";
-import {ProgramsI, SubjectsRes} from "@/interface";
+import {ProgramsI, SubjectsReq} from "@/interface";
 
 export const useGetSubjects=()=>{
-    return useQuery<SubjectsRes>('get-subjects',()=>ReqLib.getRes<SubjectsRes>('subjects'))
+    return useQuery<SubjectsReq>('get-subjects',()=>ReqLib.getRes<SubjectsReq>('subjects'))
 }
 
 export const useGetByIdSubjects=(id:string)=>{

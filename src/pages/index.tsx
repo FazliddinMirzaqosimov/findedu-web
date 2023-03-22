@@ -1,27 +1,8 @@
 import Head from "next/head";
-
-import {
- usePostReview,
-} from "@/hooks/ReviewQuery";
-
 import Homepage from "@/modules/Home";
+import {useLogin, useOtpValidation, useRegister} from "@/hooks/AuthQuery";
 
 export default function Home() {
-
-
-  const {mutate}=usePostReview()
-
-  const postReview=():void=>{
-    console.log('das')
-    const data={
-      user: "6416f1c23c9a60905124cda9",
-      rating: 4.5,
-      reviewText: 'Yaxshi o\'quv markazi'
-    }
-    // const id="63fd08430f36639ac928c68b"
-
-    mutate({id:"63fd08430f36639ac928c68b", data})
-  }
 
   return (
     <>
@@ -31,8 +12,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <button onClick={postReview}>send preview</button>
-
       <Homepage />
     </>
   );

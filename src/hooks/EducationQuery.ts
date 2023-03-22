@@ -1,9 +1,9 @@
 import {useQuery} from "react-query";
 import ReqLib from "@/lib/api";
-import {EducationI, EducationRes} from "@/interface";
+import {EducationI, EducationReq} from "@/interface";
 
 export const useGetEducation=()=>{
-    return useQuery<EducationRes>('get-education',()=>ReqLib.getRes<EducationRes>('edu'))
+    return useQuery<EducationReq>('get-education',()=>ReqLib.getRes<EducationReq>('edu'))
 }
 
 export const useGetByIdEducation=(id:string)=>{

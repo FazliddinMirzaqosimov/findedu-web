@@ -1,5 +1,5 @@
 import {useMutation, useQuery} from "react-query";
-import {PostReviewI, ReviewByEduCentreRes, ReviewByIdRes, ReviewI, ReviewRes} from "@/interface";
+import {PostReviewI, PostReviewReq, ReviewByEduCentreReq, ReviewByIdReq, ReviewI, ReviewReq} from "@/interface";
 import ReqLib from "@/lib/api";
 import data from "@react-google-maps/api/src/components/drawing/Data";
 
@@ -9,19 +9,18 @@ interface PostReviewId{
 }
 
 export const useGetReview=()=>{
-    return useQuery<ReviewRes>('get-review',()=>ReqLib.getRes<ReviewRes>('review'))
+    return useQuery<ReviewReq>('get-review',()=>ReqLib.getRes<ReviewReq>('review'))
 }
 export const useGetByIdReview=(id:string)=>{
-    return useQuery<ReviewByIdRes>(['get-by-id-review',id],()=>ReqLib.getByIdRes<ReviewByIdRes>('review',id))
+    return useQuery<ReviewByIdReq>(['get-by-id-review',id],()=>ReqLib.getByIdRes<ReviewByIdReq>('review',id))
 }
 
 export const useGetByEduCentreReview=(id:string)=>{
-    return useQuery<ReviewByEduCentreRes>(['get-by-edu-review',id],()=>ReqLib.getByIdRes<ReviewByEduCentreRes>('review/educentre',id))
+    return useQuery<ReviewByEduCentreReq>(['get-by-edu-review',id],()=>ReqLib.getByIdRes<ReviewByEduCentreReq>('review/educentre',id))
 }
 
 export const usePostReview=()=>{
-    return useMutation<ReviewI,Error,PostReviewI>(({id, data}:PostReviewId)=>{
-        console.log(data)
-       return  ReqLib.postRes<ReviewI>('review',id,data)
+    return useMutation<ReviewI,Error,PostReviewReq>(({id, data})=>{
+       return  ReqLib.postRes<ReviewI,PostReviewI>('review',id,data)
     })
 }

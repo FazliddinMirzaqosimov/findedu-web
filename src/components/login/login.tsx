@@ -1,7 +1,7 @@
 import { LoginTypes } from "@/interface";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 // import styles from "./styles.module.scss";
 import styles from "./style.module.css";
 const Login: React.FC<LoginTypes> = ({ type }) => {
@@ -19,7 +19,7 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
     }
   }, []);
 
-  const onSubmitR = (e: any) => {
+  const onSubmitR = (e: FormEvent) => {
     e.preventDefault();
 
     console.log(e);

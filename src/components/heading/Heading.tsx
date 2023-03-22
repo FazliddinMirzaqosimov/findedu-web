@@ -18,7 +18,6 @@ const Heading: React.FC<IProps> = ({
 	titleSize,
 	children,
 }) => {
-	console.log("render");
 	let titleContent: React.ReactNode;
 
 	if (!highlightedWord) {

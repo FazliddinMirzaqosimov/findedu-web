@@ -38,50 +38,48 @@ export interface DropdownProps {
   dropName: string;
 }
 
-
-
-export interface UserI{
-  _id:string
-  name: string
-  email: string
-  passwordHash: string
-  isValidated: boolean
-  role: string
+export interface UserI {
+  _id: string;
+  name: string;
+  email: string;
+  passwordHash: string;
+  isValidated: boolean;
+  role: string;
 }
 
-export interface LanguageI{
+export interface LanguageI {
   _id: string
   name_uz: string
   name_ru: string
   name_en: string
-  __v: number
+  __v: number;
 }
 
-export interface LanguageRes{
-  total:number
-  data:LanguageI[]
+export interface LanguageRes {
+  total: number
+  data: LanguageI[]
 }
-export interface SubjectsI{
+export interface SubjectsI {
   _id: string
   name_uz: string
   name_ru: string
   name_en: string
   image: {
-    "_id": string
-    "path": string
-  }
+    _id: string;
+    path: string;
+  };
 }
 
-export interface SubjectsRes{
-  total:number
-  data:SubjectsI[]
+export interface SubjectsRes {
+  total: number;
+  data: SubjectsI[];
 }
-export interface ProgramsI{
-  _id: string
-  name_uz: string
-  name_ru: string
-  name_en: string
-  image: string
+export interface ProgramsI {
+  _id: string;
+  name_uz: string;
+  name_ru: string;
+  name_en: string;
+  image: string;
 }
 
 export interface ProgramsRes{
@@ -165,3 +163,6 @@ export interface PostReviewI{
   reviewText: string
 }
 
+export interface LoginTypes {
+  type: "login" | "register" | "confirm";
+}

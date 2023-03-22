@@ -1,0 +1,255 @@
+.tabs {
+  display: flex;
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.signup .tabs .h2confirm {
+  color: var(--login) !important;
+  font-weight: 600;
+}
+
+.tabs h2 {
+  color: rgb(0, 0, 0, 0.5);
+  font-weight: 500;
+  font-size: 18px;
+  transition: 0.2s;
+}
+.tabs h2:hover {
+  cursor: pointer;
+  color: var(--login);
+}
+
+.button,
+.input {
+  border: 0;
+  width: 100%;
+  height: 60px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px;
+  outline: none;
+}
+
+.signup {
+  margin: 0 auto;
+  /* width: 100%; */
+  z-index: 999;
+  height: 100%;
+  padding: 0px 0px;
+  /* background: #111820; */
+}
+
+.form {
+  margin: 0;
+  /* background-color: white; */
+  display: grid;
+  grid-template-columns: 400px 60px;
+  gap: 15px;
+}
+.form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.textbox {
+  position: relative;
+  width: 100%;
+}
+
+.textbox span {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  left: 0;
+  font-size: 22px;
+  pointer-events: none;
+  color: rgb(255 255 255 / 40%);
+}
+
+.textbox input {
+  background-color: white;
+  border-radius: 15px;
+  padding: 0 15px 0 15px;
+  border: 2px solid rgb(0, 0, 0, 0.3);
+  color: rgb(0, 0, 0, 0.5);
+  height: 60px;
+}
+
+.form :is(input:focus, input:valid) ~ label {
+  translate: -40px -40px;
+  scale: 0.875;
+  padding: 0 5px;
+  margin-left: 10px;
+  background-color: white;
+}
+
+.form input:focus ~ label {
+  color: var(--login);
+  padding: 0 5px;
+  margin-left: 10px;
+  background-color: white;
+}
+
+.form input:focus {
+  border-color: var(--login);
+}
+
+.form :is(input:focus, input:valid) ~ span {
+  color: rgb(255 255 255 / 96%);
+}
+
+.textbox label {
+  position: absolute;
+  top: 50%;
+  left: 36px;
+  translate: 0 -50%;
+  color: rgb(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: 0.4s;
+}
+
+.form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 0px;
+  border-radius: 15px;
+  background: var(--login);
+  color: #f9f9f9;
+  border: 0;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 22px;
+  height: 100%;
+  width: 100%;
+}
+
+.signup p > a {
+  text-align: center;
+  color: rgb(0, 0, 0, 0.5);
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.signup p > a:hover {
+  color: var(--login);
+}
+.signup p {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  width: 400px;
+}
+
+@media (max-width: 500px) {
+  .tabs {
+    width: 340px;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .signup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tabs h2 {
+    font-size: 14px;
+  }
+  .form {
+    grid-template-columns: 340px 55px;
+    gap: 10px;
+  }
+  .form > div {
+    gap: 10px;
+  }
+}
+@media (max-width: 420px) {
+  .signup {
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .tabs {
+    margin-bottom: 20px;
+    gap: 20px;
+    width: 100%;
+  }
+  .tabs > h2 {
+    font-size: 14px;
+  }
+  .form {
+    grid-template-columns: 270px 50px;
+  }
+  .textbox > .input {
+    height: 50px;
+  }
+  .form :is(input:focus, input:valid) ~ label {
+    translate: -20px -32px;
+    scale: 0.75;
+    margin-left: 10px;
+    background-color: white;
+  }
+  .textbox label {
+    font-size: 12px;
+    left: 20px;
+  }
+  .signup p {
+    margin-top: 10px;
+  }
+  .signup p > a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 340px) {
+  .form :is(input:focus, input:valid) ~ label {
+    translate: -20px -26px;
+  }
+  .tabs {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .tabs h2 {
+    font-size: 14px;
+  }
+
+  .form {
+    grid-template-columns: 220px 40px;
+  }
+  .textbox > .input {
+    height: 40px;
+  }
+
+  .form button {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 270px) {
+  .tabs {
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  .tabs h2 {
+    font-size: 12px;
+  }
+
+  .form {
+    grid-template-columns: 180px 35px;
+    gap: 8px;
+  }
+  .form > div {
+    gap: 8px;
+  }
+  .textbox > .input {
+    height: 35px;
+  }
+}

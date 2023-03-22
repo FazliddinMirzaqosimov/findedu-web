@@ -1,0 +1,63 @@
+.imgCon1 {
+  position: fixed;
+  z-index: -1;
+  width: 600px;
+  height: 600px;
+  transform: translate(-200px, -140px);
+  top: 0;
+  left: 0;
+  //   background-size: 100% 100%;
+  background-image: url("../../assets/graph (1).png");
+  background-size: cover;
+}
+.imgCon2 {
+  position: fixed;
+  z-index: -1;
+  width: 600px;
+  height: 600px;
+  transform: translate(120px, 220px);
+  bottom: 0;
+  right: 0;
+  background-image: url("../../assets/graph.png");
+  background-size: cover;
+}
+.loginDiv {
+  z-index: 10;
+}
+
+.mainContainer {
+  overflow: hidden;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 905px) {
+  .imgCon1 {
+    width: 500px;
+    height: 500px;
+    transform: translate(-160px, -120px);
+  }
+  .imgCon2 {
+    width: 500px;
+    height: 500px;
+    transform: translate(130px, 200px);
+  }
+}
+@media (max-width: 770px) {
+  .imgCon1 {
+    width: 400px;
+    height: 400px;
+    transform: translate(-150px, -120px);
+  }
+  .imgCon2 {
+    width: 400px;
+    height: 400px;
+    transform: translate(100px, 150px);
+  }
+}

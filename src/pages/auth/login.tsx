@@ -1,19 +1,22 @@
-import EducationPage from "@/modules/education/Educations";
-import Head from "next/head";
 import React from "react";
+import Login from "@/components/login/login";
+import Auth from "@/modules/auth/auth";
+import Head from "next/head";
 
-const Education = () => {
+const LoginPage = () => {
   return (
     <>
       <Head>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>O&apos;quv markazlar</title>
+        <title>Kirish</title>
       </Head>
-      <EducationPage />
+      <div>
+        <Auth type="login" />
+      </div>
     </>
   );
 };
 
-export default Education;
+export default LoginPage;

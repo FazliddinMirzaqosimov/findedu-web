@@ -8,6 +8,6 @@ export const useGetEducation=()=>{
 
 export const useGetByIdEducation=(id:string)=>{
     return useQuery<EducationI>(['get-education--by-id',id],()=>ReqLib.getByIdRes<EducationI>('edu',id),{
-        enabled:false
+        // enabled:false
     })
 }

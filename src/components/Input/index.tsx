@@ -70,7 +70,7 @@ const Index: React.FC<InputMainProps> = ({ dropdown, button, placeholder }) => {
             setInput(e.target.value);
           }}
           style={{
-            width: button ? "100%" : "",
+            width: button ? "100%" : "auto",
           }}
         />
         {/* </div> */}

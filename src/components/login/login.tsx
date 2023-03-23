@@ -1,15 +1,24 @@
+import { useRegister } from "@/hooks/AuthQuery";
 import { LoginTypes } from "@/interface";
+import {
+  registerUserFailure,
+  registerUserStart,
+  registerUserSuccess,
+} from "@/service/redux/authSlice";
+import { useAppDispatch } from "@/service/redux/hooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEvent, useEffect, useState } from "react";
 // import styles from "./styles.module.scss";
 import styles from "./style.module.css";
 const Login: React.FC<LoginTypes> = ({ type }) => {
-  const [email, setEmail] = useState<string>("");
-  const [name, setName] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>("name");
+  const [name, setName] = useState<string>("err");
+  const [password, setPassword] = useState<string>("sadsas");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const router = useRouter();
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     // setEmail("");
@@ -19,14 +28,22 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
     }
   }, []);
 
-  const onSubmitR = (e: FormEvent) => {
+  const onSubmitR = async (e: FormEvent) => {
     e.preventDefault();
-
+    dispatch(registerUserStart);
     console.log(e);
-
-    setTimeout(() => {
-      router.push("/auth/register/confirm");
-    }, 500);
+    const user = {
+      name,
+      email,
+      password,
+      // role: "user",
+    };
+    const { mutate } = useRegister();
+    try {
+      dispatch(registerUserSuccess);
+    } catch (error) {
+      dispatch(registerUserFailure);
+    }
   };
 
   if (type === "confirm") {

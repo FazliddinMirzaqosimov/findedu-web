@@ -4,12 +4,14 @@ interface AuthState {
   isLoading: boolean;
   loggedIn: boolean;
   user: object | null;
+  error: string | object | null | boolean;
 }
 
-const initialState = {
+const initialState: AuthState = {
   isLoading: false,
   loggedIn: false,
   user: null,
+  error: null,
 };
 
 export const authSlice = createSlice({
@@ -17,17 +19,29 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     // Login
+
     loginUserStart: (state) => {
       state.isLoading = true;
     },
+
     loginUserSuccess: (state) => {},
+
     loginUserFailure: (state) => {},
+
     // Register
     registerUserStart: (state) => {
       state.isLoading = true;
     },
-    registerUserSuccess: (state) => {},
-    registerUserFailure: (state) => {},
+
+    registerUserSuccess: (state) => {
+      state.loggedIn = true;
+      state.isLoading = false;
+    },
+
+    registerUserFailure: (state) => {
+      state.error = true;
+      state.isLoading = false;
+    },
   },
 });
 

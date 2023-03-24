@@ -9,6 +9,7 @@ import img1 from "@/assets/media/Najot_Talim-01.png";
 import Button from "@/components/Button";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import { useGetEducation } from "@/hooks/EducationQuery";
+import { Skeleton } from "antd";
 const DynamicSectionArr = [
   {
     title: "Tanlashingiz mumkin",
@@ -283,8 +284,8 @@ const dropdown = [
 function EducationPage() {
   const [more, setMore] = useState<boolean>(false);
 
-  const { data } = useGetEducation();
-
+  const { data, isLoading } = useGetEducation();
+  console.log(isLoading);
   const onClick = () => {
     setMore(!more);
   };
@@ -300,20 +301,21 @@ function EducationPage() {
       <DynamicList sectionList={DynamicSectionArr[0]} />
 
       <div className={styles.cards}>
-        {data?.data.map((item, i) => {
-          if (more) {
-            return (
-              <Card
-                key={item._id}
-                title={item.name_uz}
-                description={"Biz ilm va tajriba ulashamiz"}
-                score={4.7}
-                imgUrl={img1}
-                href={`/educations/${item._id}`}
-              />
-            );
-          } else {
-            if (i < 9) {
+        {isLoading ? (
+          <>
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+          </>
+        ) : (
+          data?.data.map((item, i) => {
+            if (more) {
               return (
                 <Card
                   key={item._id}
@@ -324,9 +326,22 @@ function EducationPage() {
                   href={`/educations/${item._id}`}
                 />
               );
+            } else {
+              if (i < 9) {
+                return (
+                  <Card
+                    key={item._id}
+                    title={item.name_uz}
+                    description={"Biz ilm va tajriba ulashamiz"}
+                    score={4.7}
+                    imgUrl={img1}
+                    href={`/educations/${item._id}`}
+                  />
+                );
+              }
             }
-          }
-        })}
+          })
+        )}
       </div>
 
       <div

@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import filterReducer from "./Input";
+import authReducer from "./authSlice";
 
 const store = configureStore({
-  reducer: { filter: filterReducer },
+  reducer: { filter: filterReducer, auth: authReducer },
   devTools: process.env.NODE_ENV !== "production",
 });
 

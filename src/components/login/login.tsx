@@ -15,7 +15,7 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
   const [email, setEmail] = useState<string>("name");
   const [name, setName] = useState<string>("err");
   const [password, setPassword] = useState<string>("sadsas");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("123");
   const router = useRouter();
 
   const dispatch = useAppDispatch();
@@ -27,22 +27,22 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
       router.push(router.pathname);
     }
   }, []);
+  const { mutate } = useRegister();
 
   const onSubmitR = async (e: FormEvent) => {
     e.preventDefault();
-    dispatch(registerUserStart);
-    console.log(e);
     const user = {
       name,
       email,
       password,
-      // role: "user",
     };
-    const { mutate } = useRegister();
+    dispatch(registerUserStart());
     try {
-      dispatch(registerUserSuccess);
+      mutate(user);
+      dispatch(registerUserSuccess());
     } catch (error) {
-      dispatch(registerUserFailure);
+      console.log(error);
+      dispatch(registerUserFailure());
     }
   };
 
@@ -153,7 +153,7 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
           className={styles.form}
           autoComplete="off"
           autoCapitalize="off"
-          onSubmit={(e) => onSubmitR(e)}
+          onSubmit={onSubmitR}
         >
           <div>
             <div className={styles.textbox}>

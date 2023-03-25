@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface AuthUser {
   id?: string;
   email?: string;
-  token: string;
+  access_token?: string;
 }
 
 interface AuthError {
@@ -15,7 +15,7 @@ interface AuthState {
   isLoading?: boolean;
   loggedIn?: boolean;
   user: AuthUser | null;
-  error?: AuthError | null;
+  error?: AuthError | any;
 }
 
 const initialState: AuthState = {
@@ -37,8 +37,8 @@ export const authSlice = createSlice({
       state.loggedIn = true;
       state.isLoading = false;
       state.user = action.payload;
-      localStorage.setItem("token", action.payload.token);
-      setItem("token", action.payload.token);
+      action.payload.access_token &&
+        setItem("token", action.payload.access_token);
     },
     signUserFailure: (state, action: PayloadAction<AuthError>) => {
       state.isLoading = false;

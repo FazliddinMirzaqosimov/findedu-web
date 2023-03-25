@@ -1,10 +1,21 @@
+import { setItem } from "./../helpers/persistance-storage";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface AuthUser {
+  id?: string;
+  email?: string;
+  token: string;
+}
+
+interface AuthError {
+  message?: string;
+}
 
 interface AuthState {
   isLoading?: boolean;
   loggedIn?: boolean;
-  user?: object | null;
-  error?: string | object | null | boolean;
+  user: AuthUser | null;
+  error?: AuthError | null;
 }
 
 const initialState: AuthState = {
@@ -22,55 +33,21 @@ export const authSlice = createSlice({
     signUserStart: (state) => {
       state.isLoading = true;
     },
-    signUserSuccess: (state, action: PayloadAction<AuthState>) => {
+    signUserSuccess: (state, action: PayloadAction<AuthUser>) => {
       state.loggedIn = true;
       state.isLoading = false;
       state.user = action.payload;
+      localStorage.setItem("token", action.payload.token);
+      setItem("token", action.payload.token);
     },
-    signUserFailure: (state, action: PayloadAction<AuthState>) => {
+    signUserFailure: (state, action: PayloadAction<AuthError>) => {
       state.isLoading = false;
       state.error = action.payload;
     },
-    // loginUserStart: (state) => {
-    //   state.isLoading = true;
-    // },
-
-    // loginUserSuccess: (state) => {
-    //   state.loggedIn = true;
-    //   state.isLoading = false;
-    // },
-
-    // loginUserFailure: (state) => {
-    //   state.isLoading = false;
-    // },
-
-    // // Register
-    // registerUserStart: (state) => {
-    //   state.isLoading = true;
-    // },
-
-    // registerUserSuccess: (state) => {
-    //   state.loggedIn = true;
-    //   state.isLoading = false;
-    // },
-
-    // registerUserFailure: (state) => {
-    //   state.error = true;
-    //   state.isLoading = false;
-    // },
   },
 });
 
-export const {
-  // loginUserStart,
-  // registerUserStart,
-  // loginUserSuccess,
-  // loginUserFailure,
-  // registerUserSuccess,
-  // registerUserFailure,
-  signUserStart,
-  signUserSuccess,
-  signUserFailure,
-} = authSlice.actions;
+export const { signUserStart, signUserSuccess, signUserFailure } =
+  authSlice.actions;
 
 export default authSlice.reducer;

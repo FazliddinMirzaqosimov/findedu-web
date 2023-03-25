@@ -5,7 +5,6 @@ axios.defaults.baseURL = "http://3.138.61.64";
 
 axios.interceptors.request.use((config) => {
   const token = getItem("token");
-  console.log(config.headers);
 
   const authorization = token ? `Bearer ${token}` : "";
   config.headers.Authorization = authorization;

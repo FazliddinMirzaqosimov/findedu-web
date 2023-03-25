@@ -53,8 +53,6 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
 
   const onSubmitR = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(e);
-
     // const user = {
     //   name,
     //   email,
@@ -79,16 +77,7 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
     error: errorLogin,
   } = useLogin();
 
-  const onSubmitL = async (e: FormEvent) => {
-    e.preventDefault();
-    const user = {
-      email,
-      password,
-    };
-    const response = loginM(user);
-    console.log(loginData, response);
-    dispatch(signUserStart());
-
+  useEffect(() => {
     if (errorL) {
       dispatch(signUserFailure(errorLogin));
       console.log(errorLogin);
@@ -96,14 +85,17 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
       dispatch(signUserSuccess(loginData));
       router.push("/");
     }
+  }, [errorL, successL]);
 
-    try {
-      // dispatch(signUserSuccess());
-      // router.push("/");
-    } catch (error) {
-      // dispatch(signUserFailure(error));
-      console.log(error);
-    }
+  const onSubmitL = async (e: FormEvent) => {
+    e.preventDefault();
+    const user = {
+      email,
+      password,
+    };
+    loginM(user);
+    dispatch(signUserStart());
+    console.log(successL, errorL);
   };
 
   if (type === "confirm") {

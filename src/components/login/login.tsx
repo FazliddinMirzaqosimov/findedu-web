@@ -20,10 +20,13 @@ import React, { FormEvent, useEffect, useState } from "react";
 // import styles from "./styles.module.scss";
 import styles from "./style.module.css";
 import ValError from "./validation-error";
+import { useForm } from "react-hook-form";
 
 const antIcon = <LoadingOutlined style={{ color: "white" }} spin />;
 
 const Login: React.FC<LoginTypes> = ({ type }) => {
+  const { register, reset, handleSubmit } = useForm();
+
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -40,27 +43,41 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
       router.push(router.pathname);
     }
   }, []);
-  const { mutate: register } = useRegister();
+  const {
+    mutate: registerM,
+    data: regData,
+    isError: errorR,
+    isSuccess: successR,
+    error: errorReg,
+  } = useRegister();
 
   const onSubmitR = async (e: FormEvent) => {
     e.preventDefault();
-    const user = {
-      name,
-      email,
-      password,
-    };
-    register(user);
-    dispatch(signUserStart());
-    try {
-      // dispatch(signUserSuccess());
-      router.push("/");
-    } catch (error) {
-      // dispatch(signUserFailure());
-      console.log(error);
-    }
+    console.log(e);
+
+    // const user = {
+    //   name,
+    //   email,
+    //   password,
+    // };
+    // registerM(user);
+    // dispatch(signUserStart());
+    // try {
+    //   // dispatch(signUserSuccess());
+    //   router.push("/");
+    // } catch (error) {
+    //   // dispatch(signUserFailure());
+    //   console.log(error);
+    // }
   };
 
-  const { mutate: login, data } = useLogin();
+  const {
+    mutate: loginM,
+    data: loginData,
+    isError: errorL,
+    isSuccess: successL,
+    error: errorLogin,
+  } = useLogin();
 
   const onSubmitL = async (e: FormEvent) => {
     e.preventDefault();
@@ -68,9 +85,18 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
       email,
       password,
     };
-    const response = login(user);
-    console.log(data, response);
+    const response = loginM(user);
+    console.log(loginData, response);
     dispatch(signUserStart());
+
+    if (errorL) {
+      dispatch(signUserFailure(errorLogin));
+      console.log(errorLogin);
+    } else if (successL) {
+      dispatch(signUserSuccess(loginData));
+      router.push("/");
+    }
+
     try {
       // dispatch(signUserSuccess());
       // router.push("/");
@@ -192,7 +218,7 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
           className={styles.form}
           autoComplete="off"
           autoCapitalize="off"
-          onSubmit={onSubmitR}
+          onSubmit={handleSubmit(onSubmitR)}
         >
           <div>
             <div className={styles.textbox}>

@@ -1,9 +1,15 @@
-import { useRegister } from "@/hooks/AuthQuery";
+import { useLogin, useRegister } from "@/hooks/AuthQuery";
 import { LoginTypes } from "@/interface";
 import {
-  registerUserFailure,
-  registerUserStart,
-  registerUserSuccess,
+  // loginUserFailure,
+  // loginUserStart,
+  // loginUserSuccess,
+  // registerUserFailure,
+  // registerUserStart,
+  // registerUserSuccess,
+  signUserFailure,
+  signUserStart,
+  signUserSuccess,
 } from "@/service/redux/authSlice";
 import { useAppDispatch } from "@/service/redux/hooks";
 import Link from "next/link";
@@ -11,11 +17,12 @@ import { useRouter } from "next/router";
 import React, { FormEvent, useEffect, useState } from "react";
 // import styles from "./styles.module.scss";
 import styles from "./style.module.css";
+import ValError from "./validation-error";
 const Login: React.FC<LoginTypes> = ({ type }) => {
-  const [email, setEmail] = useState<string>("name");
-  const [name, setName] = useState<string>("err");
-  const [password, setPassword] = useState<string>("sadsas");
-  const [confirmPassword, setConfirmPassword] = useState<string>("123");
+  const [email, setEmail] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
   const router = useRouter();
 
   const dispatch = useAppDispatch();
@@ -27,7 +34,7 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
       router.push(router.pathname);
     }
   }, []);
-  const { mutate } = useRegister();
+  const { mutate: register } = useRegister();
 
   const onSubmitR = async (e: FormEvent) => {
     e.preventDefault();
@@ -36,13 +43,31 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
       email,
       password,
     };
-    dispatch(registerUserStart());
+    register(user);
+    dispatch(signUserStart());
     try {
-      mutate(user);
-      dispatch(registerUserSuccess());
+      // dispatch(signUserSuccess());
     } catch (error) {
+      // dispatch(signUserFailure());
       console.log(error);
-      dispatch(registerUserFailure());
+    }
+  };
+
+  const { mutate: login } = useLogin();
+
+  const onSubmitL = async (e: FormEvent) => {
+    e.preventDefault();
+    const user = {
+      email,
+      password,
+    };
+    login(user);
+    dispatch(signUserStart());
+    try {
+      // dispatch(signUserSuccess());
+    } catch (error) {
+      // dispatch(signUserFailure(error));
+      console.log(error);
     }
   };
 
@@ -97,7 +122,13 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
             <h2>Ro&apos;yhatdan o&apos;tish</h2>
           </Link>
         </div>
-        <form className={styles.form} autoComplete="off" autoCapitalize="off">
+        <ValError />
+        <form
+          className={styles.form}
+          autoComplete="off"
+          autoCapitalize="off"
+          onSubmit={onSubmitL}
+        >
           <div>
             <div className={styles.textbox}>
               <input

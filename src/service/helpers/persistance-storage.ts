@@ -10,3 +10,11 @@ export const setItem = (key: string, token: string) => {
     console.log(err);
   }
 };
+
+export const getItem = (key: string) => {
+  try {
+    return localStorage.getItem(key);
+  } catch (err) {
+    console.log(err);
+  }
+};

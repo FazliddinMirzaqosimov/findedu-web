@@ -11,13 +11,18 @@ import {
   signUserStart,
   signUserSuccess,
 } from "@/service/redux/authSlice";
-import { useAppDispatch } from "@/service/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/service/redux/hooks";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEvent, useEffect, useState } from "react";
 // import styles from "./styles.module.scss";
 import styles from "./style.module.css";
 import ValError from "./validation-error";
+
+const antIcon = <LoadingOutlined style={{ color: "white" }} spin />;
+
 const Login: React.FC<LoginTypes> = ({ type }) => {
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -25,12 +30,13 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const router = useRouter();
 
+  const { isLoading, loggedIn } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // setEmail("");
-    // setPassword("");
-    if (router.pathname) {
+    if (loggedIn) {
+      router.push("/");
+    } else if (router.pathname) {
       router.push(router.pathname);
     }
   }, []);
@@ -47,13 +53,14 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
     dispatch(signUserStart());
     try {
       // dispatch(signUserSuccess());
+      router.push("/");
     } catch (error) {
       // dispatch(signUserFailure());
       console.log(error);
     }
   };
 
-  const { mutate: login } = useLogin();
+  const { mutate: login, data } = useLogin();
 
   const onSubmitL = async (e: FormEvent) => {
     e.preventDefault();
@@ -61,10 +68,12 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
       email,
       password,
     };
-    login(user);
+    const response = login(user);
+    console.log(data, response);
     dispatch(signUserStart());
     try {
       // dispatch(signUserSuccess());
+      // router.push("/");
     } catch (error) {
       // dispatch(signUserFailure(error));
       console.log(error);
@@ -94,7 +103,7 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
             </div>
 
             <button type="submit" className={styles.button}>
-              -&gt;
+              {isLoading ? <Spin indicator={antIcon} /> : <span>-&gt;</span>}
             </button>
           </form>
           <p>
@@ -122,7 +131,6 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
             <h2>Ro&apos;yhatdan o&apos;tish</h2>
           </Link>
         </div>
-        <ValError />
         <form
           className={styles.form}
           autoComplete="off"
@@ -155,7 +163,7 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
           </div>
 
           <button type="submit" className={styles.button}>
-            -&gt;
+            {isLoading ? <Spin indicator={antIcon} /> : <>-&gt;</>}
           </button>
         </form>
         <p>
@@ -234,7 +242,7 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
           </div>
 
           <button type="submit" className={styles.button}>
-            -&gt;
+            {isLoading ? <Spin indicator={antIcon} /> : <span>-&gt;</span>}
           </button>
         </form>
       </div>

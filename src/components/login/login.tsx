@@ -85,7 +85,7 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
       dispatch(signUserSuccess(loginData));
       router.push("/");
     }
-  }, [loggedIn]);
+  }, [errorL, successL]);
 
   const onSubmitL = async (e: FormEvent) => {
     e.preventDefault();

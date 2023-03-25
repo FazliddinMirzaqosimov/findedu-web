@@ -3544,10 +3544,10 @@ react-google-maps@^9.4.5:
     scriptjs "^2.5.8"
     warning "^3.0.0"
 
-react-hook-form@6.15.5:
-  version "6.15.5"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.15.5.tgz#c2578f9ce6a6df7b33015587d40cd880dc13e2db"
-  integrity sha512-so2jEPYKdVk1olMo+HQ9D9n1hVzaPPFO4wsjgSeZ964R7q7CHsYRbVF0PGBi83FcycA5482WHflasdwLIUVENg==
+react-hook-form@^7.43.8:
+  version "7.43.8"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.43.8.tgz#189fe4fb31e15c280b529cc3041249ed12108d75"
+  integrity sha512-BQm+Ge5KjTk1EchDBRhdP8Pkb7MArO2jFF+UWYr3rtvh6197khi22uloLqlWeuY02ItlCzPunPsFt1/q9wQKnw==
 
 react-intersection-observer@^9.4.3:
   version "9.4.3"

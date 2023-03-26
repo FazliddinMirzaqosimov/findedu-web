@@ -1,4 +1,4 @@
-import Auth from "@/modules/auth/auth";
+import RegisterP from "@/modules/auth/RegisterP";
 import Head from "next/head";
 
 const register = () => {
@@ -11,7 +11,7 @@ const register = () => {
         <title>Royhatdan O&apos;tish</title>
       </Head>
       <div>
-        <Auth type="register" />
+        <RegisterP />
       </div>
     </>
   );

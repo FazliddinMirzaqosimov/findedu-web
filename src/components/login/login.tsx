@@ -1,5 +1,4 @@
 import { useLogin, useRegister } from "@/hooks/AuthQuery";
-import { LoginTypes } from "@/interface";
 import {
   signUserFailure,
   signUserStart,
@@ -16,7 +15,7 @@ import { useForm } from "react-hook-form";
 
 const antIcon = <LoadingOutlined style={{ color: "white" }} spin />;
 
-const Login: React.FC<LoginTypes> = ({ type }) => {
+const Login = () => {
   const { register, reset, handleSubmit } = useForm();
 
   const [email, setEmail] = useState<string>("");
@@ -62,40 +61,6 @@ const Login: React.FC<LoginTypes> = ({ type }) => {
     dispatch(signUserStart());
     console.log(isSuccess, isError);
   };
-
-  if (type === "confirm") {
-    return (
-      <>
-        <div className={styles.signup}>
-          <div className={styles.tabs}>
-            <h2 className={styles.h2confirm}>Tasdiqlash</h2>
-          </div>
-          <form className={styles.form} autoComplete="off" autoCapitalize="off">
-            <div>
-              <div className={styles.textbox}>
-                <input
-                  type="text"
-                  className={styles.input}
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <label className={styles.label}>Code</label>
-                {/* <span className="material-symbols-outlined"> email </span> */}
-              </div>
-            </div>
-
-            <button type="submit" className={styles.button}>
-              {isLoading ? <Spin indicator={antIcon} /> : <span>-&gt;</span>}
-            </button>
-          </form>
-          <p>
-            <a href="">Resend Code</a>
-          </p>
-        </div>
-      </>
-    );
-  }
 
   return (
     <>

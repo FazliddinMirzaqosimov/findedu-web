@@ -1,16 +1,16 @@
-import Login from "@/components/login/login";
 import style from "./auth.module.scss";
+import RegisterComponent from "@/components/login/Register";
 
-const LoginP = () => {
+const RegisterP = () => {
   return (
     <div className={style.mainContainer}>
       <div className={style.imgCon1}></div>
       <div className={style.imgCon2}></div>
       <div className={style.loginDiv}>
-        <Login />
+        <RegisterComponent />
       </div>
     </div>
   );
 };
 
-export default LoginP;
+export default RegisterP;

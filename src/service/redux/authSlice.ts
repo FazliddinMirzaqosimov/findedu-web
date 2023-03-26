@@ -1,7 +1,7 @@
 import { setItem } from "./../helpers/persistance-storage";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface AuthUser {
+export interface AuthUser {
   id?: string;
   email?: string;
   access_token?: string;
@@ -11,7 +11,7 @@ interface AuthError {
   message?: string;
 }
 
-interface AuthState {
+export interface AuthState {
   isLoading?: boolean;
   loggedIn?: boolean;
   user: AuthUser | null;

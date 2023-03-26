@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { StarFilled } from "@ant-design/icons";
-import { Form, Input, Rate } from "antd";
+import { Form, Input, message, Rate } from "antd";
 
 import { EducationI, LanguageI } from "@/interface";
+import { AuthState, AuthUser } from "@/service/redux/authSlice";
+import { FilterState } from "@/service/redux/Input";
 import styles from "./style.module.scss";
 
 import Heading from "@/components/heading/Heading";
@@ -14,10 +16,19 @@ import Corusel from "@/components/carusel/carusel";
 import Button from "@/components/Button";
 import NTLogo from "@/assets/media/nt_logo.png";
 import Card from "@/components/card";
+import { usePostReview } from "@/hooks/ReviewQuery";
+import { useSelector } from "react-redux";
 
-const onFinish = (values: any) => {
-  console.log("Success:", values);
-};
+interface IReduxState {
+  auth: AuthState;
+  filter: FilterState;
+}
+
+interface IReviewSubmit {
+  user: AuthUser;
+  rating: number;
+  reviewText: string;
+}
 
 const onFinishFailed = (errorInfo: any) => {
   console.log("Failed:", errorInfo);
@@ -158,7 +169,36 @@ const staticData = {
 };
 
 function EduDetail({ data }: { data: EducationI }) {
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = "updatable";
+  const user = useSelector((state: IReduxState) => state.auth.user);
   console.log(data);
+  const reviewMutation = usePostReview();
+  const onFinish = (values: IReviewSubmit) => {
+    reviewMutation.mutate(
+      {
+        id: data._id,
+        data: { ...values, user: user?.email || "Rootuser" + Date.now() },
+      },
+      {
+        onError: () => {
+          messageApi.open({
+            key,
+            type: "error",
+            content: reviewMutation.error?.message,
+          });
+        },
+        onSuccess: () => {
+          messageApi.open({
+            key,
+            type: "success",
+            content: "Send!",
+          });
+        },
+      }
+    );
+  };
+
   const DynamicListFormatter = (data: any) => {
     const result = [];
     for (const [key, value] of Object.entries(data)) {
@@ -169,10 +209,13 @@ function EduDetail({ data }: { data: EducationI }) {
         tags: [],
       };
       tagItems.title = key;
-      if (!val?.length) tagItems.tags.push({ text: "Ma'lumot yo'q" });
-      val.forEach((item) => {
-        tagItems.tags.push({ text: item.name_uz });
-      });
+      if (!val?.length) {
+        tagItems.tags.push({ text: "Ma'lumot yo'q" });
+      } else {
+        val.forEach((item) => {
+          tagItems.tags.push({ text: item.name_uz });
+        });
+      }
       result.push(tagItems);
     }
     return result;
@@ -180,6 +223,7 @@ function EduDetail({ data }: { data: EducationI }) {
 
   return (
     <main className={styles.main}>
+      {contextHolder}
       <section className={styles.heroSection}>
         <div>
           <Heading
@@ -282,7 +326,7 @@ function EduDetail({ data }: { data: EducationI }) {
         >
           <div className={styles.textarea}>
             <Form.Item
-              name="comment"
+              name="reviewText"
               rules={[
                 { required: true, message: "Please input your comment!" },
               ]}
@@ -291,16 +335,21 @@ function EduDetail({ data }: { data: EducationI }) {
                 rows={4}
                 placeholder="Izoh qoldirishingiz mumkin..."
               ></Input.TextArea>
-            </Form.Item>{" "}
+            </Form.Item>
           </div>
           <Form.Item
             label="O’quv markazga baho bering:"
-            name="rate"
+            name="rating"
             rules={[{ required: true, message: "Please input your Rate!" }]}
           >
-            <Rate allowHalf defaultValue={2.5} />
+            <Rate allowHalf defaultValue={0} />
           </Form.Item>
-          <Button label="izohni yuborish" type="primary" border="full" />
+          <Button
+            disable={reviewMutation.isLoading}
+            label="izohni yuborish"
+            type="primary"
+            border="full"
+          />
         </Form>
       </section>
       <section className={styles.recommendation}>

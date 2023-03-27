@@ -1,5 +1,5 @@
 import React from "react";
-import Auth from "@/modules/auth/auth";
+import Login from "@/modules/auth/auth";
 import Head from "next/head";
 
 const LoginPage = () => {
@@ -12,7 +12,7 @@ const LoginPage = () => {
         <title>Kirish</title>
       </Head>
       <div>
-        <Auth />
+        <Login />
       </div>
     </>
   );

@@ -70,7 +70,6 @@ const RegisterComponent = () => {
     mutate(user);
     email ? setEmaile(email) : null;
   };
-  console.log(data);
 
   return (
     <>

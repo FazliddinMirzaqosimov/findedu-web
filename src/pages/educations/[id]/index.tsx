@@ -1,6 +1,7 @@
 import EducationDetail from "@/modules/educationDetail";
 import { useRouter } from "next/router";
 import { useGetByIdEducation } from "@/hooks/EducationQuery";
+import { Skeleton } from "antd";
 
 function Index() {
   const router = useRouter();
@@ -10,7 +11,7 @@ function Index() {
   }
 
   const data = useGetByIdEducation(id);
-  if (data.status !== "success") return <h1>{data.status}</h1>;
+  if (data.status !== "success") return <Skeleton />;
 
   return <EducationDetail data={data.data} />;
 }

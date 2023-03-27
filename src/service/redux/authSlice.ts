@@ -15,14 +15,18 @@ export interface AuthState {
   isLoading?: boolean;
   loggedIn?: boolean;
   user: AuthUser | null;
-  error?: AuthError | any;
+  errorL?: AuthError | undefined;
+  errorR?: AuthError | undefined;
+  errorO?: AuthError | undefined;
 }
 
 const initialState: AuthState = {
   isLoading: false,
   loggedIn: false,
   user: null,
-  error: null,
+  errorL: undefined,
+  errorO: undefined,
+  errorR: undefined,
 };
 
 export const authSlice = createSlice({
@@ -40,14 +44,33 @@ export const authSlice = createSlice({
       action.payload.access_token &&
         setItem("token", action.payload.access_token);
     },
-    signUserFailure: (state, action: PayloadAction<AuthError>) => {
+    logUserFailure: (state, action: PayloadAction<AuthError>) => {
       state.isLoading = false;
-      state.error = action.payload;
+      state.errorL = action.payload;
+    },
+    signPreError: (state) => {
+      state.errorL = undefined;
+      state.errorR = undefined;
+      state.errorO = undefined;
+    },
+    regUserFailure: (state, action: PayloadAction<AuthError>) => {
+      state.isLoading = false;
+      state.errorR = action.payload;
+    },
+    otpUserFailure: (state, action: PayloadAction<AuthError>) => {
+      state.isLoading = false;
+      state.errorO = action.payload;
     },
   },
 });
 
-export const { signUserStart, signUserSuccess, signUserFailure } =
-  authSlice.actions;
+export const {
+  signUserStart,
+  signUserSuccess,
+  logUserFailure,
+  signPreError,
+  regUserFailure,
+  otpUserFailure,
+} = authSlice.actions;
 
 export default authSlice.reducer;

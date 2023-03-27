@@ -1,9 +1,10 @@
 import { useLogin, useRegister } from "@/hooks/AuthQuery";
 import { LoginTypes, FormData } from "@/interface";
 import {
-  signUserFailure,
+  regUserFailure,
   signUserStart,
   signUserSuccess,
+  signPreError,
 } from "@/service/redux/authSlice";
 import { useAppDispatch, useAppSelector } from "@/service/redux/hooks";
 import LoadingOutlined from "@ant-design/icons";
@@ -29,14 +30,18 @@ const RegisterComponent = () => {
   const [emaile, setEmaile] = useState<string>("");
 
   const router = useRouter();
-
-  const { isLoading, loggedIn } = useAppSelector((state) => state.auth);
+  const {
+    isLoading,
+    loggedIn,
+    errorR: ErrorRedux,
+  } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (loggedIn) {
       router.push("/");
     }
+    signPreError();
   }, []);
   const {
     mutate,
@@ -49,7 +54,7 @@ const RegisterComponent = () => {
 
   useEffect(() => {
     if (isError) {
-      dispatch(signUserFailure(error));
+      dispatch(regUserFailure(error.response.data.message));
       console.log(error);
     } else if (isSuccess) {
       // dispatch(signUserSuccess(data));
@@ -89,8 +94,15 @@ const RegisterComponent = () => {
         {!!errors &&
           Object.keys(errors).map((e) => {
             console.log(errors[e]?.message);
-            return <ValError key={e} message={errors[e]?.message} />;
+            return (
+              <ValError type="info" key={e} message={errors[e]?.message} />
+            );
           })}
+        <>
+          {ErrorRedux && (
+            <ValError remove={true} type="error" message={ErrorRedux} />
+          )}
+        </>
       </Space>
       <div className={styles.signup}>
         <div className={styles.tabs}>

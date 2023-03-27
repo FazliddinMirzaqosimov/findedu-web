@@ -7,7 +7,8 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { useOtpValidation } from "@/hooks/AuthQuery";
 import { FormData, LoginTypes } from "@/interface";
 import {
-  signUserFailure,
+  signPreError,
+  otpUserFailure,
   signUserStart,
   signUserSuccess,
 } from "@/service/redux/authSlice";
@@ -24,7 +25,11 @@ const OtpVolid = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { isLoading, loggedIn } = useAppSelector((state) => state.auth);
+  const {
+    isLoading,
+    loggedIn,
+    errorO: ErrorRedux,
+  } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -40,14 +45,17 @@ const OtpVolid = () => {
     if (loggedIn) {
       router.push("/");
     } else if (!localStorage.getItem("email")) {
+      typeof window !== "undefined" ? localStorage.remove("email") : undefined;
       router.push(`/auth/register`);
     }
+    signPreError();
   }, []);
   useEffect(() => {
     if (isError) {
-      dispatch(signUserFailure(error));
+      dispatch(otpUserFailure(error));
       console.log(error);
     } else if (isSuccess) {
+      localStorage.removeItem("email");
       router.push(`/auth/login`);
     }
   }, [isLoadingO]);
@@ -85,8 +93,15 @@ const OtpVolid = () => {
         {!!errors &&
           Object.keys(errors).map((e) => {
             console.log(errors[e]?.message);
-            return <ValError key={e} message={errors[e]?.message} />;
+            return (
+              <ValError type="info" key={e} message={errors[e]?.message} />
+            );
           })}
+        <>
+          {ErrorRedux && (
+            <ValError remove={true} type="error" message={ErrorRedux} />
+          )}
+        </>
       </Space>
       <div className={styles.signup}>
         <div className={styles.tabs}>

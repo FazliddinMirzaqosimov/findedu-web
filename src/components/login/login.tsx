@@ -1,11 +1,12 @@
 import { useLogin, useRegister } from "@/hooks/AuthQuery";
 import {
-  signUserFailure,
+  signPreError,
+  logUserFailure,
   signUserStart,
   signUserSuccess,
 } from "@/service/redux/authSlice";
 import { useAppDispatch, useAppSelector } from "@/service/redux/hooks";
-import LoadingOutlined from "@ant-design/icons";
+import { LoadingOutlined } from "@ant-design/icons";
 import { Space, Spin } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -27,13 +28,19 @@ const Login = () => {
 
   const router = useRouter();
 
-  const { isLoading, loggedIn } = useAppSelector((state) => state.auth);
+  const {
+    isLoading,
+    loggedIn,
+    errorL: ErrorRedux,
+  } = useAppSelector((state) => state.auth);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (loggedIn) {
       router.push("/");
     }
+    signPreError();
   }, []);
 
   const {
@@ -47,8 +54,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isError) {
-      dispatch(signUserFailure(error));
-      console.log(error);
+      dispatch(logUserFailure(error.response.data.message));
     } else if (isSuccess) {
       dispatch(signUserSuccess(data));
       router.push("/");
@@ -58,7 +64,12 @@ const Login = () => {
   const onSubmitL = async (e: FormData) => {
     console.log(e);
 
-    // mutate(user);
+    const user = {
+      email: e.email ? e.email : "123",
+      password: e.password ? e.password : "12345",
+    };
+
+    mutate(user);
     dispatch(signUserStart());
     console.log(isSuccess, isError);
   };
@@ -80,9 +91,18 @@ const Login = () => {
         {!!errors &&
           Object.keys(errors).map((e) => {
             console.log(errors[e]?.message);
-            return <ValError key={e} message={errors[e]?.message} />;
+            return (
+              <ValError type="info" key={e} message={errors[e]?.message} />
+            );
           })}
+
+        <>
+          {ErrorRedux && (
+            <ValError type="error" message={ErrorRedux} remove={true} />
+          )}
+        </>
       </Space>
+      {console.log(ErrorRedux)}
       <div className={styles.signup}>
         <div className={styles.tabs}>
           <Link href="/auth/login">
@@ -137,7 +157,7 @@ const Login = () => {
           </div>
 
           <button type="submit" className={styles.button}>
-            {isLoading ? <Spin indicator={antIcon} /> : <>-&gt;</>}
+            {isLoadingL ? <Spin indicator={antIcon} /> : <>-&gt;</>}
           </button>
         </form>
         <p>

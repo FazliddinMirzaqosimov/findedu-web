@@ -33,7 +33,7 @@ function Navbar() {
     <header className={`${css.navbar}`}>
       <div className="container">
         <div className={`${css.wrapper} ${blur > 300 && css.padding}`}>
-          <Link href="/">
+          <Link href="/" >
             <Image className={css.logo} src={logo} alt="Logo" />
           </Link>
           <input type="checkbox" id="checkbox" />

@@ -217,5 +217,5 @@ export interface FormData {
   email?: string;
   password?: string;
   passwordConfirm?: string;
-  otpValidationInput?: string | number;
+  otp?: string;
 }

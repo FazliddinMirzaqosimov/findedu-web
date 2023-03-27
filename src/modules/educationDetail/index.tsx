@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { StarFilled } from "@ant-design/icons";
 import { Form, Input, message, Rate } from "antd";
+import { useRouter } from "next/router";
 
 import { EducationI, LanguageI } from "@/interface";
 import { AuthState, AuthUser } from "@/service/redux/authSlice";
@@ -169,12 +170,14 @@ const staticData = {
 };
 
 function EduDetail({ data }: { data: EducationI }) {
+  const router = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
   const key = "updatable";
   const user = useSelector((state: IReduxState) => state.auth.user);
   console.log(data);
   const reviewMutation = usePostReview();
   const onFinish = (values: IReviewSubmit) => {
+    if (!user) return router.push('/auth/login');
     reviewMutation.mutate(
       {
         id: data._id,

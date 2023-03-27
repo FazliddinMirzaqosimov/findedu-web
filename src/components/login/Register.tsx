@@ -60,6 +60,7 @@ const RegisterComponent = () => {
 
   const onSubmitR = async (e: FormData) => {
     // mutate({ name, email, password });
+    dispatch(signUserStart());
     console.log(e);
     const { name, email, password } = e;
     const user = {

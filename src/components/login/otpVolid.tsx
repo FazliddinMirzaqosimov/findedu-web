@@ -54,6 +54,7 @@ const OtpVolid = () => {
     console.log(e);
 
     const getEmail = localStorage.getItem("email");
+    dispatch(signUserStart());
     mutate({
       email: getEmail ? getEmail : "123",
       otp: e.otp ? e.otp : "12345",

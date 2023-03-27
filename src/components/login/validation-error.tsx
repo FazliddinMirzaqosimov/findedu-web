@@ -1,6 +1,5 @@
 import { useAppSelector } from "@/service/redux/hooks";
 import { Alert, Space } from "antd";
-import { FieldError } from "react-hook-form";
 
 interface valErr {
   message: string;

@@ -80,9 +80,9 @@ const RegisterComponent = () => {
   return (
     <>
       <Space
+        className={styles.space_ant}
         direction="vertical"
         style={{
-          width: "400px",
           textAlign: "center",
           position: "absolute",
           top: "10px",

@@ -77,6 +77,7 @@ const Login = () => {
   return (
     <>
       <Space
+        className={styles.space_ant}
         direction="vertical"
         style={{
           width: "400px",

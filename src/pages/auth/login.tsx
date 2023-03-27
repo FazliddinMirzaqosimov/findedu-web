@@ -1,5 +1,4 @@
 import React from "react";
-import Login from "@/components/login/login";
 import Auth from "@/modules/auth/auth";
 import Head from "next/head";
 
@@ -13,7 +12,7 @@ const LoginPage = () => {
         <title>Kirish</title>
       </Head>
       <div>
-        <Auth type="login" />
+        <Auth />
       </div>
     </>
   );

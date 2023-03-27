@@ -1,5 +1,5 @@
 import { useLogin, useRegister } from "@/hooks/AuthQuery";
-import { LoginTypes } from "@/interface";
+import { LoginTypes, FormData } from "@/interface";
 import {
   signUserFailure,
   signUserStart,
@@ -7,10 +7,10 @@ import {
 } from "@/service/redux/authSlice";
 import { useAppDispatch, useAppSelector } from "@/service/redux/hooks";
 import LoadingOutlined from "@ant-design/icons";
-import { Alert, Space, Spin } from "antd";
+import { Alert, message, Space, Spin } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./style.module.css";
 import ValError from "./validation-error";
 import { useForm } from "react-hook-form";
@@ -22,15 +22,11 @@ const RegisterComponent = () => {
     reset,
     handleSubmit,
     register,
+    watch,
     formState: { errors },
   } = useForm();
   const useFo = useForm();
-  //   console.log(useFo);
-
-  const [email, setEmail] = useState<string>("");
-  const [name, setName] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [emaile, setEmaile] = useState<string>("");
 
   const router = useRouter();
 
@@ -42,16 +38,60 @@ const RegisterComponent = () => {
       router.push("/");
     }
   }, []);
-  const { mutate, data, isError, isSuccess, error } = useRegister();
+  const {
+    mutate,
+    data,
+    isError,
+    isSuccess,
+    error,
+    isLoading: isLoadingR,
+  } = useRegister();
 
-  const onSubmitR = async (e: FormEvent) => {
+  useEffect(() => {
+    if (isError) {
+      dispatch(signUserFailure(error));
+      console.log(error);
+    } else if (isSuccess) {
+      // dispatch(signUserSuccess(data));
+      localStorage.setItem("email", emaile);
+      router.push(`/auth/register/confirm/`);
+    }
+  }, [isLoadingR]);
+
+  const onSubmitR = async (e: FormData) => {
     // mutate({ name, email, password });
     console.log(e);
-    reset();
+    const { name, email, password } = e;
+    const user = {
+      name: name ? name : "123",
+      email: email ? email : "123",
+      password: password ? password : "123",
+    };
+    mutate(user);
+    email ? setEmaile(email) : null;
   };
+  console.log(data);
 
   return (
     <>
+      <Space
+        direction="vertical"
+        style={{
+          width: "400px",
+          textAlign: "center",
+          position: "absolute",
+          top: "10px",
+          left: "50%",
+          transform: "translate(-50%, 0)",
+          zIndex: 99,
+        }}
+      >
+        {!!errors &&
+          Object.keys(errors).map((e) => {
+            console.log(errors[e]?.message);
+            return <ValError key={e} message={errors[e]?.message} />;
+          })}
+      </Space>
       <div className={styles.signup}>
         <div className={styles.tabs}>
           <Link href="/auth/login">
@@ -90,7 +130,6 @@ const RegisterComponent = () => {
             </div>
             <div className={styles.textbox}>
               <input
-                name="name"
                 {...register("name", {
                   minLength: {
                     value: 4,
@@ -120,8 +159,11 @@ const RegisterComponent = () => {
             <div className={styles.textbox}>
               <input
                 {...register("confirmPassword", {
-                  validate: (value: string) =>
-                    value === password || "The passwords do not match",
+                  validate: (value) => {
+                    return (
+                      value === watch("password") || "Passwords do not match"
+                    );
+                  },
                 })}
                 type="password"
                 required

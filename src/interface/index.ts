@@ -211,3 +211,11 @@ export interface LoginErrorRes {
   message: string;
   error: string;
 }
+
+export interface FormData {
+  name?: string;
+  email?: string;
+  password?: string;
+  passwordConfirm?: string;
+  otpValidationInput?: string | number;
+}

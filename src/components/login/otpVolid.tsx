@@ -12,7 +12,8 @@ import {
   signUserSuccess,
 } from "@/service/redux/authSlice";
 import { useAppDispatch, useAppSelector } from "@/service/redux/hooks";
-import { Spin } from "antd";
+import { Space, Spin } from "antd";
+import ValError from "./validation-error";
 
 const antIcon = <LoadingOutlined style={{ color: "white" }} spin />;
 
@@ -54,7 +55,6 @@ const OtpVolid = () => {
     console.log(e);
 
     const getEmail = localStorage.getItem("email");
-    dispatch(signUserStart());
     mutate({
       email: getEmail ? getEmail : "123",
       otp: e.otp ? e.otp : "12345",
@@ -70,6 +70,24 @@ const OtpVolid = () => {
 
   return (
     <>
+      <Space
+        direction="vertical"
+        style={{
+          width: "400px",
+          textAlign: "center",
+          position: "absolute",
+          top: "10px",
+          left: "50%",
+          transform: "translate(-50%, 0)",
+          zIndex: 99,
+        }}
+      >
+        {!!errors &&
+          Object.keys(errors).map((e) => {
+            console.log(errors[e]?.message);
+            return <ValError key={e} message={errors[e]?.message} />;
+          })}
+      </Space>
       <div className={styles.signup}>
         <div className={styles.tabs}>
           <h2 className={styles.h2confirm}>Tasdiqlash</h2>
@@ -98,7 +116,7 @@ const OtpVolid = () => {
           </div>
 
           <button type="submit" className={styles.button}>
-            {isLoading ? <Spin indicator={antIcon} /> : <span>-&gt;</span>}
+            {isLoadingO ? <Spin indicator={antIcon} /> : <span>-&gt;</span>}
           </button>
         </form>
 

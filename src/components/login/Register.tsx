@@ -33,11 +33,26 @@ const RegisterComponent = () => {
   const { isLoading, loggedIn } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
+
+  const errMessage=():void=>{
+    Object.keys(errors).map((e) => {
+      const mess=errors[e]?.message
+      message.info(String(mess))
+    })
+  }
+
+
+
   useEffect(() => {
     if (loggedIn) {
       router.push("/");
     }
   }, []);
+
+  useEffect(()=>{
+    errMessage()
+  },[errors])
+
   const {
     mutate,
     data,
@@ -74,24 +89,25 @@ const RegisterComponent = () => {
 
   return (
     <>
-      <Space
-        direction="vertical"
-        style={{
-          width: "400px",
-          textAlign: "center",
-          position: "absolute",
-          top: "10px",
-          left: "50%",
-          transform: "translate(-50%, 0)",
-          zIndex: 99,
-        }}
-      >
-        {!!errors &&
-          Object.keys(errors).map((e) => {
-            console.log(errors[e]?.message);
-            return <ValError key={e} message={errors[e]?.message} />;
-          })}
-      </Space>
+      {/*<Space*/}
+      {/*  direction="vertical"*/}
+      {/*  style={{*/}
+      {/*    width: "400px",*/}
+      {/*    textAlign: "center",*/}
+      {/*    position: "absolute",*/}
+      {/*    top: "10px",*/}
+      {/*    left: "50%",*/}
+      {/*    transform: "translate(-50%, 0)",*/}
+      {/*    zIndex: 99,*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  {!!errors &&*/}
+      {/*    Object.keys(errors).map((e) => {*/}
+      {/*      const mess=errors[e]?.message*/}
+      {/*      console.log(errors)*/}
+      {/*      return <ValError key={e} messages={mess} />;*/}
+      {/*    })}*/}
+      {/*</Space>*/}
       <div className={styles.signup}>
         <div className={styles.tabs}>
           <Link href="/auth/login">
@@ -177,6 +193,7 @@ const RegisterComponent = () => {
             className={styles.button}
             onClick={() => {
               console.log(errors, "er");
+              errMessage()
             }}
           >
             {isLoading ? <Spin indicator={antIcon} /> : <span>-&gt;</span>}

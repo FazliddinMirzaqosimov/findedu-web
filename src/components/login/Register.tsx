@@ -1,9 +1,10 @@
 import { useLogin, useRegister } from "@/hooks/AuthQuery";
 import { LoginTypes, FormData } from "@/interface";
 import {
-  signUserFailure,
+  regUserFailure,
   signUserStart,
   signUserSuccess,
+  signPreError,
 } from "@/service/redux/authSlice";
 import { useAppDispatch, useAppSelector } from "@/service/redux/hooks";
 import LoadingOutlined from "@ant-design/icons";
@@ -29,8 +30,11 @@ const RegisterComponent = () => {
   const [emaile, setEmaile] = useState<string>("");
 
   const router = useRouter();
-
-  const { isLoading, loggedIn } = useAppSelector((state) => state.auth);
+  const {
+    isLoading,
+    loggedIn,
+    errorR: ErrorRedux,
+  } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
 
@@ -47,6 +51,7 @@ const RegisterComponent = () => {
     if (loggedIn) {
       router.push("/");
     }
+    signPreError();
   }, []);
 
   useEffect(()=>{
@@ -64,7 +69,7 @@ const RegisterComponent = () => {
 
   useEffect(() => {
     if (isError) {
-      dispatch(signUserFailure(error));
+      dispatch(regUserFailure(error.response.data.message));
       console.log(error);
     } else if (isSuccess) {
       // dispatch(signUserSuccess(data));
@@ -75,6 +80,7 @@ const RegisterComponent = () => {
 
   const onSubmitR = async (e: FormData) => {
     // mutate({ name, email, password });
+    dispatch(signUserStart());
     console.log(e);
     const { name, email, password } = e;
     const user = {
@@ -85,7 +91,6 @@ const RegisterComponent = () => {
     mutate(user);
     email ? setEmaile(email) : null;
   };
-  console.log(data);
 
   return (
     <>

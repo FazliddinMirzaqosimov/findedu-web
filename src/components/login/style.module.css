@@ -1,3 +1,7 @@
+.space_ant {
+  width: 400px;
+}
+
 .tabs {
   display: flex;
   width: 400px;
@@ -111,9 +115,11 @@
   color: rgb(0, 0, 0, 0.5);
   pointer-events: none;
   transition: 0.4s;
+  user-select: none;
 }
 
 .form button {
+  user-select: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -129,7 +135,6 @@
   height: 100%;
   width: 100%;
 }
-
 .signup p > a {
   text-align: center;
   color: rgb(0, 0, 0, 0.5);
@@ -170,6 +175,9 @@
   }
 }
 @media (max-width: 420px) {
+  .space_ant {
+    width: 90% !important;
+  }
   .signup {
     width: 100% !important;
     display: flex;

@@ -61,6 +61,10 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.errorO = action.payload;
     },
+    logOutUser: (state) => {
+      state.loggedIn = false;
+      state.user = null;
+    },
   },
 });
 
@@ -71,6 +75,7 @@ export const {
   signPreError,
   regUserFailure,
   otpUserFailure,
+  logOutUser,
 } = authSlice.actions;
 
 export default authSlice.reducer;

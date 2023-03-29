@@ -18,3 +18,11 @@ export const getItem = (key: string) => {
     console.log(err);
   }
 };
+
+export const removeItem = (key: string) => {
+  try {
+    localStorage.removeItem(key);
+  } catch (err) {
+    console.log(err);
+  }
+}

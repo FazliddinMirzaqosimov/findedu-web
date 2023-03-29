@@ -4,10 +4,15 @@ import Image from "next/image";
 import css from "./navbar.module.scss";
 import Link from "next/link";
 import Button from "../Button";
+import { removeItem } from "@/service/helpers/persistance-storage";
+import { useAppDispatch } from "@/service/redux/hooks";
+import { logOutUser } from "@/service/redux/authSlice";
 
 function Navbar() {
   const [active, setActive] = useState(false);
   const [blur, setBlur] = useState(0);
+
+  const dispatch = useAppDispatch();
 
   const activate = () => {
     if (active) {
@@ -29,11 +34,17 @@ function Navbar() {
     };
   }, []);
 
+  const logout = () => {
+    removeItem("token");
+    dispatch(logOutUser());
+    window.location.reload();
+  };
+
   return (
     <header className={`${css.navbar}`}>
       <div className="container">
         <div className={`${css.wrapper} ${blur > 300 && css.padding}`}>
-          <Link href="/" >
+          <Link href="/">
             <Image className={css.logo} src={logo} alt="Logo" />
           </Link>
           <input type="checkbox" id="checkbox" />
